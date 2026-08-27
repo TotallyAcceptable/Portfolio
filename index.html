@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leilani Bennett | Game Developer & Systems Programmer</title>
-  <!-- Tailwind CSS CDN -->
+  <title>Leilani Bennett | Software Engineer & Games Developer</title>
+  
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter & JetBrains Mono -->
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-  <!-- Lucide Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <!-- Icons & Animations -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- AOS (Animate on Scroll) CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
 
   <script>
     tailwind.config = {
@@ -24,516 +27,621 @@
             mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
-            brand: {
-              gold: '#D4AF37',
-              goldLight: '#F3E5AB',
-              goldMuted: '#997D24',
-              dark: '#050505',
-              card: '#0D0D11',
-              cardHover: '#131318',
-              border: '#23232C',
-              borderGold: '#D4AF3740'
+            app: {
+              bg: '#050505',
+              surface: '#0d0d0f',
+              panel: '#121215',
+              border: '#222226',
+              text: '#e4e4e7',
+              muted: '#8b8b93',
+              glow: 'rgba(255, 255, 255, 0.08)'
+            }
+          },
+          animation: {
+            'spin-slow': 'spin 12s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
             }
           }
         }
       }
     }
   </script>
+
   <style>
     body {
       background-color: #050505;
-      color: #e2e8f0;
+      color: #e4e4e7;
+      overflow-x: hidden;
+      cursor: none; /* Hide default cursor for custom dot */
     }
-    .glow-gold {
-      box-shadow: 0 0 35px -5px rgba(212, 175, 55, 0.2);
+
+    /* Custom Cursor */
+    #cursor-dot {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      background-color: white;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s;
     }
-    .glow-gold-lg {
-      box-shadow: 0 0 60px -10px rgba(212, 175, 55, 0.25);
+    #cursor-ring {
+      position: fixed;
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.15s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
     }
-    .gold-gradient-text {
-      background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #FFFFFF 100%);
+    
+    /* Interactive Hover States for Cursor */
+    body.hovering #cursor-dot { width: 0px; height: 0px; }
+    body.hovering #cursor-ring { width: 48px; height: 48px; border-color: white; background-color: rgba(255,255,255,0.05); }
+
+    /* Animated Dark Grid Background */
+    .bg-cyber-grid {
+      background-size: 50px 50px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+    }
+
+    /* Glassmorphism & Glows */
+    .glass-panel {
+      background: rgba(18, 18, 21, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .hover-glow:hover {
+      box-shadow: 0 0 40px -10px rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Typography Gradients */
+    .text-gradient-silver {
+      background: linear-gradient(180deg, #ffffff 0%, #71717a 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .gold-border-gradient {
-      border-image: linear-gradient(to right, #D4AF37, #23232C) 1;
+    
+    /* Syntax Highlighting overrides */
+    pre[class*="language-"] { background: #0a0a0c !important; border: 1px solid #222226 !important; border-radius: 1rem !important; }
+
+    /* Audio Toggle Pulse */
+    .audio-waves span {
+      display: block; width: 3px; height: 12px; background: white; border-radius: 2px;
+      animation: wave 1s ease-in-out infinite alternate;
     }
-    /* Animated Mesh Background */
-    .bg-ambient {
-      background-image: 
-        radial-gradient(circle at 15% 20%, rgba(212, 175, 55, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 85% 60%, rgba(255, 255, 255, 0.03) 0%, transparent 40%);
-    }
+    .audio-waves span:nth-child(2) { animation-delay: 0.2s; }
+    .audio-waves span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes wave { 0% { height: 4px; } 100% { height: 16px; } }
+    .muted .audio-waves span { animation: none; height: 4px; background: #555; }
   </style>
 </head>
-<body class="font-sans antialiased selection:bg-brand-gold selection:text-black bg-ambient">
+<body class="relative antialiased selection:bg-white selection:text-black">
 
-  <!-- NAVIGATION -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#050505]/85 backdrop-blur-md border-b border-brand-border transition-all duration-300">
+  <!-- Audio Elements -->
+  <!-- Ambient dark synth drone (royalty free placeholder URL) -->
+  <audio id="bg-music" loop src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=dark-ambient-110052.mp3"></audio>
+  <!-- UI Sound Effects (short blips) -->
+  <audio id="sfx-hover" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=pop-39222.mp3"></audio>
+  <audio id="sfx-click" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_731e84cebe.mp3?filename=ui-click-43196.mp3"></audio>
+
+  <!-- Custom Cursor -->
+  <div id="cursor-dot" class="hidden md:block"></div>
+  <div id="cursor-ring" class="hidden md:block"></div>
+
+  <!-- Background Layer -->
+  <div class="fixed inset-0 z-[-1] bg-app-bg">
+    <div class="absolute inset-0 bg-cyber-grid opacity-60"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-white opacity-[0.015] blur-[120px] rounded-full pointer-events-none"></div>
+  </div>
+
+  <!-- Audio Controller -->
+  <button id="audio-toggle" class="fixed bottom-6 left-6 z-50 glass-panel p-3 rounded-full flex items-center gap-3 muted hover-glow interactive" aria-label="Toggle Audio">
+    <div class="audio-waves flex items-end gap-[3px] h-4">
+      <span></span><span></span><span></span>
+    </div>
+    <span class="text-[10px] font-mono uppercase tracking-widest text-app-muted mr-1" id="audio-label">Sound Off</span>
+  </button>
+
+  <!-- Top Availability Banner -->
+  <aside class="relative z-50 bg-app-panel border-b border-app-border py-2.5 px-6 flex justify-center">
+    <div class="flex items-center gap-3 text-[11px] font-mono text-app-muted tracking-wider">
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="text-white">Seeking Junior Programmer Roles</span>
+      </div>
+      <span class="hidden sm:inline border-l border-app-border h-3"></span>
+      <span class="hidden sm:inline text-white">BSc Hons First Class Graduate</span>
+    </div>
+  </aside>
+
+  <!-- Main Navigation -->
+  <nav class="sticky top-0 z-40 glass-panel border-b-0 border-app-border transition-all duration-300">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#hero" class="text-lg font-bold font-mono tracking-wider text-brand-gold hover:opacity-80 transition flex items-center gap-2 group">
-        <div class="p-1 rounded bg-brand-gold/10 border border-brand-gold/30 group-hover:border-brand-gold transition">
-          <i data-lucide="gamepad-2" class="w-4 h-4 text-brand-gold"></i>
-        </div>
-        <span>LEILANI.BENNETT</span>
+      <a href="#home" class="text-sm font-medium font-mono tracking-widest text-white flex items-center gap-3 interactive">
+        <i data-lucide="hexagon" class="w-5 h-5 text-white"></i>
+        <span>L.BENNETT</span>
       </a>
-      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-        <a href="#flagship" class="hover:text-brand-gold transition">Featured Project</a>
-        <a href="#projects" class="hover:text-brand-gold transition">Games & Systems</a>
-        <a href="#skills" class="hover:text-brand-gold transition">Technical Skills</a>
-        <a href="#documents" class="hover:text-brand-gold transition">Documents</a>
-        <a href="#education" class="hover:text-brand-gold transition">Background</a>
+      
+      <div class="hidden md:flex items-center space-x-8 text-[11px] font-mono uppercase tracking-[0.2em] text-app-muted">
+        <a href="#showcase" class="hover:text-white transition-colors interactive">Showcase</a>
+        <a href="#architecture" class="hover:text-white transition-colors interactive">Code</a>
+        <a href="#portfolio" class="hover:text-white transition-colors interactive">Portfolio</a>
+        <a href="#stack" class="hover:text-white transition-colors interactive">Stack</a>
       </div>
-      <div class="flex items-center gap-3">
-        <a href="#documents" class="px-4 py-2 text-xs font-mono font-semibold bg-brand-gold/10 border border-brand-gold/40 text-brand-gold hover:bg-brand-gold hover:text-black rounded transition shadow-sm hover:shadow-brand-gold/20">
-          VIEW CV
-        </a>
-      </div>
+
+      <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="px-4 py-2 text-[10px] font-mono font-bold bg-white text-black hover:bg-gray-200 rounded transition duration-300 flex items-center gap-2 interactive">
+        <i data-lucide="hard-drive" class="w-3 h-3"></i> ACCESS VAULT
+      </a>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <section id="hero" class="pt-36 pb-24 px-6 max-w-7xl mx-auto relative">
-    <div class="flex flex-col items-start gap-6 max-w-4xl" data-aos="fade-up" data-aos-duration="900">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-brand-border text-white text-xs font-mono backdrop-blur-sm">
-        <span class="w-2 h-2 rounded-full bg-brand-gold animate-ping"></span>
-        <span>First Class Honours (BSc) in Computer Games Development | Westminster</span>
+  <!-- Hero Section -->
+  <header id="home" class="pt-32 pb-24 px-6 max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center">
+    <div class="animate-float">
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-panel text-[11px] font-mono text-app-muted mb-8 tracking-widest border-white/10">
+        <i data-lucide="cpu" class="w-3.5 h-3.5 text-white"></i>
+        <span>Games Developer & Systems Engineer</span>
       </div>
+    </div>
+    
+    <h1 class="text-5xl sm:text-7xl md:text-8xl font-semibold tracking-tighter text-white leading-[1.05] mb-6 max-w-5xl" data-aos="fade-up" data-aos-duration="1000">
+      Building robust <span class="text-gradient-silver italic pr-2">mechanics</span> <br/>
+      for virtual worlds.
+    </h1>
+
+    <p class="text-sm sm:text-base text-app-muted leading-relaxed max-w-2xl font-light mb-10" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+      Specialized in Unreal Engine (C++), Unity, and network architecture. Focused on delivering optimized gameplay logic, custom rendering pipelines, and scalable cloud-backend integration.
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-wrap items-center justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+      <a href="#showcase" class="px-7 py-3.5 rounded-full bg-white text-black font-medium text-xs font-mono uppercase tracking-widest hover:bg-gray-200 transition duration-300 flex items-center gap-2 interactive">
+        <i data-lucide="play-circle" class="w-4 h-4"></i> View Projects
+      </a>
+      <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="px-7 py-3.5 rounded-full glass-panel text-white font-medium text-xs font-mono uppercase tracking-widest hover-glow transition duration-300 flex items-center gap-2 interactive">
+        <i data-lucide="folder-open" class="w-4 h-4"></i> Drive Repository
+      </a>
+    </div>
+  </header>
+
+  <!-- Quick Stats Grid -->
+  <section class="max-w-6xl mx-auto px-6 pb-24 relative z-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="300">
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover-glow transition duration-300 interactive cursor-default">
+        <i data-lucide="graduation-cap" class="w-5 h-5 text-app-muted"></i>
+        <div class="text-xl font-medium text-white mt-2">First Class</div>
+        <div class="text-[10px] font-mono text-app-muted uppercase tracking-wider">BSc Honours Degree</div>
+      </div>
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover-glow transition duration-300 interactive cursor-default">
+        <i data-lucide="blocks" class="w-5 h-5 text-app-muted"></i>
+        <div class="text-xl font-medium text-white mt-2">UE5 & Unity</div>
+        <div class="text-[10px] font-mono text-app-muted uppercase tracking-wider">Primary Game Engines</div>
+      </div>
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover-glow transition duration-300 interactive cursor-default">
+        <i data-lucide="code-2" class="w-5 h-5 text-app-muted"></i>
+        <div class="text-xl font-medium text-white mt-2">C++ & C#</div>
+        <div class="text-[10px] font-mono text-app-muted uppercase tracking-wider">Core Programming</div>
+      </div>
+      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover-glow transition duration-300 interactive cursor-default">
+        <i data-lucide="server" class="w-5 h-5 text-app-muted"></i>
+        <div class="text-xl font-medium text-white mt-2">PlayFab</div>
+        <div class="text-[10px] font-mono text-app-muted uppercase tracking-wider">Cloud Infrastructure</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="w-full h-px bg-gradient-to-r from-transparent via-app-border to-transparent"></div>
+
+  <!-- FLAGSHIP PROJECT 1 (UE5) -->
+  <section id="showcase" class="py-24 px-6 max-w-7xl mx-auto relative z-10">
+    <div class="flex flex-col md:flex-row gap-16 items-center">
       
-      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-[1.1]">
-        Game Programmer & <span class="gold-gradient-text">Systems Developer</span>
-      </h1>
-
-      <p class="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-3xl font-light">
-        BSc Games Development graduate with strong foundations in modern C++, C#, Unreal Engine 5, and Unity. Experienced in client-side gameplay architecture, custom Niagara VFX & shaders, multiplayer network mechanics, and cloud backend integration.
-      </p>
-
-      <div class="flex flex-wrap items-center gap-4 pt-4">
-        <a href="#flagship" class="px-6 py-3.5 rounded bg-brand-gold text-black font-semibold text-sm hover:bg-brand-goldLight transition flex items-center gap-2 shadow-lg shadow-brand-gold/15 hover:scale-[1.02] active:scale-[0.98]">
-          <i data-lucide="play" class="w-4 h-4 fill-current"></i> Explore Featured Game
-        </a>
-        <a href="#projects" class="px-6 py-3.5 rounded bg-brand-card border border-brand-border text-slate-200 font-semibold text-sm hover:border-brand-gold hover:text-white transition flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98]">
-          <i data-lucide="layers" class="w-4 h-4"></i> All Projects
-        </a>
-        <a href="https://github.com" target="_blank" class="px-5 py-3.5 rounded bg-brand-card border border-brand-border text-slate-300 font-semibold text-sm hover:border-slate-400 hover:text-white transition flex items-center gap-2">
-          <i data-lucide="github" class="w-4 h-4"></i> GitHub
-        </a>
-        <a href="mailto:rosezelda51@gmail.com" class="px-5 py-3.5 rounded bg-brand-card border border-brand-border text-slate-300 font-semibold text-sm hover:border-slate-400 hover:text-white transition flex items-center gap-2">
-          <i data-lucide="mail" class="w-4 h-4"></i> Contact
-        </a>
+      <!-- Video Side -->
+      <div class="w-full md:w-3/5" data-aos="fade-right">
+        <div class="relative rounded-3xl overflow-hidden glass-panel border border-white/10 p-2 hover-glow transition duration-500 interactive">
+          <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent z-0 pointer-events-none"></div>
+          <div class="relative z-10 rounded-2xl overflow-hidden aspect-video bg-black">
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/XAHQY7RkMws?rel=0&modestbranding=1" title="Fictitious Choices Prototype" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
       </div>
 
-      <!-- Quick Metrics Grid -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full pt-10" data-aos="fade-up" data-aos-delay="200">
-        <div class="p-4 rounded-xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition duration-300 group">
-          <div class="text-2xl font-bold font-mono text-brand-gold group-hover:scale-105 transition">First Class</div>
-          <div class="text-xs text-slate-400 font-medium pt-1">BSc Honours Classification</div>
+      <!-- Content Side -->
+      <div class="w-full md:w-2/5 flex flex-col gap-6" data-aos="fade-left">
+        <div class="text-[10px] font-mono text-app-muted uppercase tracking-[0.2em] flex items-center gap-2">
+          <span class="w-8 h-px bg-app-border"></span> Project 01
         </div>
-        <div class="p-4 rounded-xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition duration-300 group">
-          <div class="text-2xl font-bold font-mono text-white group-hover:scale-105 transition">UE5 & Unity</div>
-          <div class="text-xs text-slate-400 font-medium pt-1">Primary Game Engines</div>
+        <h2 class="text-3xl sm:text-4xl font-semibold text-white tracking-tight">Fictitious Choices</h2>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-white">Unreal Engine 5</span>
+          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-white">Modern C++</span>
+          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-white">Niagara VFX</span>
         </div>
-        <div class="p-4 rounded-xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition duration-300 group">
-          <div class="text-2xl font-bold font-mono text-brand-gold group-hover:scale-105 transition">C++ & C#</div>
-          <div class="text-xs text-slate-400 font-medium pt-1">Object-Oriented Design</div>
-        </div>
-        <div class="p-4 rounded-xl bg-brand-card border border-brand-border hover:border-brand-gold/40 transition duration-300 group">
-          <div class="text-2xl font-bold font-mono text-white group-hover:scale-105 transition">PlayFab</div>
-          <div class="text-xs text-slate-400 font-medium pt-1">Cloud Backend & LiveOps</div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <p class="text-sm text-app-muted leading-relaxed font-light">
+          A fully realized 3D narrative action prototype demonstrating modular engineering. Features include a decoupled C++ event interface, dynamic multicast delegates to eliminate cross-casting overhead, channel-traced environmental interactions, and secure PlayFab cloud serialization.
+        </p>
+        
+        <ul class="space-y-3 mt-2">
+          <li class="flex items-start gap-3 text-sm text-app-muted font-light">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
+            <span><strong>Data-Driven Architecture:</strong> Extensive implementation of DTs and DAs for zero-recompile gameplay balancing.</span>
+          </li>
+          <li class="flex items-start gap-3 text-sm text-app-muted font-light">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
+            <span><strong>Custom Shading Pipeline:</strong> Hand-authored refraction algorithms and dissolve masks using material graphs.</span>
+          </li>
+        </ul>
 
-  <!-- FLAGSHIP PROJECT CASE STUDY -->
-  <section id="flagship" class="py-24 px-6 max-w-7xl mx-auto border-t border-brand-border">
-    <div class="flex flex-col gap-3 mb-10" data-aos="fade-up">
-      <div class="text-xs font-mono text-brand-gold uppercase tracking-wider flex items-center gap-2">
-        <i data-lucide="sparkles" class="w-4 h-4"></i> Flagship University Game Project
-      </div>
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-white">Fictitious Choices – 3D Action Narrative</h2>
-      <p class="text-slate-300 max-w-3xl">
-        A full-featured Unreal Engine 5 prototype featuring third-person gameplay mechanics, modular C++ event architecture, custom Niagara VFX, dynamic lighting, and PlayFab cloud persistence.
-      </p>
-    </div>
-
-    <!-- Main Project Showcase Card -->
-    <div class="rounded-2xl bg-brand-card border border-brand-border overflow-hidden glow-gold transition duration-500 hover:border-brand-gold/50" data-aos="fade-up" data-aos-delay="100">
-      <!-- Responsive Video Player Embed -->
-      <div class="relative w-full aspect-video bg-black border-b border-brand-border">
-        <iframe 
-          class="w-full h-full" 
-          src="https://www.youtube.com/embed/XAHQY7RkMws" 
-          title="Fictitious Choices Prototype Showcase" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-
-      <!-- Multi-Disciplinary Engineering Breakdown -->
-      <div class="p-8 sm:p-10 space-y-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-6 rounded-xl bg-brand-dark border border-brand-border space-y-3 hover:border-brand-gold/40 transition">
-            <div class="flex items-center gap-2 text-brand-gold font-mono text-sm font-semibold">
-              <i data-lucide="sword" class="w-4 h-4"></i> Gameplay & Interaction
-            </div>
-            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Implemented third-person movement, stamina management, crouching, obstacle traversal, and channel-based sphere trace interaction interfaces (<code class="text-white font-mono">BPI_Interaction</code>) for NPCs, destructibles, gates, and world triggers.
-            </p>
-          </div>
-
-          <div class="p-6 rounded-xl bg-brand-dark border border-brand-border space-y-3 hover:border-brand-gold/40 transition">
-            <div class="flex items-center gap-2 text-white font-mono text-sm font-semibold">
-              <i data-lucide="cpu" class="w-4 h-4"></i> C++ Architecture & Subsystems
-            </div>
-            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Architected a decoupled C++ UI Event Subsystem using dynamic multicast delegates (<code class="text-brand-gold font-mono">FOnUIStateRequested</code>, <code class="text-brand-gold font-mono">FOnUIGoBackRequested</code>) and data-table-driven dialogue/quest state machines to eliminate actor dependencies.
-            </p>
-          </div>
-
-          <div class="p-6 rounded-xl bg-brand-dark border border-brand-border space-y-3 hover:border-brand-gold/40 transition">
-            <div class="flex items-center gap-2 text-brand-gold font-mono text-sm font-semibold">
-              <i data-lucide="wand-2" class="w-4 h-4"></i> Shaders, VFX & Profiling
-            </div>
-            <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Designed custom Niagara particle systems (magic circles, atmospheric dust, dissolve masks), custom stained glass shaders, and dynamic Lumen lighting. Profiled runtime performance to stabilize framerates across testing tiers.
-            </p>
-          </div>
-        </div>
-
-        <!-- Links & Media -->
-        <div class="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-brand-border">
-          <div class="flex flex-wrap items-center gap-3">
-            <a href="documents/W1826061-Final-Report.pdf" target="_blank" class="px-4 py-2.5 rounded-lg bg-brand-gold/10 border border-brand-gold/40 text-brand-gold text-xs font-mono font-medium hover:bg-brand-gold hover:text-black transition flex items-center gap-2">
-              <i data-lucide="file-text" class="w-4 h-4"></i> Technical Report (13,013 Words)
-            </a>
-            <a href="https://www.youtube.com/watch?v=XAHQY7RkMws" target="_blank" class="px-4 py-2.5 rounded-lg bg-brand-dark border border-brand-border text-slate-300 text-xs font-mono hover:border-white hover:text-white transition flex items-center gap-2">
-              <i data-lucide="video" class="w-4 h-4"></i> Gameplay Demonstration
-            </a>
-          </div>
-          <div class="text-xs font-mono text-slate-400">
-            Degree Project Grade: <span class="text-brand-gold font-bold">First Class Honours</span>
-          </div>
+        <div class="pt-4 flex items-center gap-4">
+          <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="text-xs font-mono font-medium text-white hover:text-gray-400 transition flex items-center gap-2 border-b border-white/30 pb-1 interactive">
+            Source & 13K Word Report <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GENERALIZED GAME PROJECTS GRID -->
-  <section id="projects" class="py-24 px-6 max-w-7xl mx-auto border-t border-brand-border">
-    <div class="flex flex-col gap-3 mb-12" data-aos="fade-up">
-      <div class="text-xs font-mono text-brand-gold uppercase tracking-wider">Portfolio Showcase</div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Games & Software Projects</h2>
-      <p class="text-slate-400 max-w-2xl">
-        Work spanning game engine architecture, networking, real-time shaders, AI logic, and collaborative team repositories.
-      </p>
+  <!-- FLAGSHIP PROJECT 2 (UE4) -->
+  <section class="py-24 px-6 max-w-7xl mx-auto relative z-10" id="fidelity">
+    <div class="flex flex-col md:flex-row-reverse gap-16 items-center">
+      
+      <!-- Video Side -->
+      <div class="w-full md:w-3/5" data-aos="fade-left">
+        <div class="relative rounded-3xl overflow-hidden glass-panel border border-white/10 p-2 hover-glow transition duration-500 interactive">
+          <div class="relative z-10 rounded-2xl overflow-hidden aspect-video bg-black">
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/cJqTlG_QSV8?rel=0&modestbranding=1" title="Fidelity Prototype" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Side -->
+      <div class="w-full md:w-2/5 flex flex-col gap-6" data-aos="fade-right">
+        <div class="text-[10px] font-mono text-app-muted uppercase tracking-[0.2em] flex items-center gap-2">
+          Project 02 <span class="w-8 h-px bg-app-border"></span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-semibold text-white tracking-tight">Fidelity Engine Logic</h2>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-white">Unreal Engine 4</span>
+          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-white">State Machines</span>
+        </div>
+        <p class="text-sm text-app-muted leading-relaxed font-light">
+          An exploration-focused action prototype constructed to evaluate complex game loop frameworks. Showcases rigid level transition management, conditional branching NPC dialogue systems, and item-based logical progression gates.
+        </p>
+        
+        <ul class="space-y-3 mt-2">
+          <li class="flex items-start gap-3 text-sm text-app-muted font-light">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
+            <span><strong>Dialogue Engineering:</strong> Stateful multi-NPC conversation trees mapped to dynamic camera sequences.</span>
+          </li>
+          <li class="flex items-start gap-3 text-sm text-app-muted font-light">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
+            <span><strong>Documentation:</strong> Backed by comprehensive Game Design Documents and system UML flowcharts.</span>
+          </li>
+        </ul>
+
+        <div class="pt-4 flex items-center gap-4">
+          <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="text-xs font-mono font-medium text-white hover:text-gray-400 transition flex items-center gap-2 border-b border-white/30 pb-1 interactive">
+            Access Game Design Docs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE / CODE INSPECTOR -->
+  <section id="architecture" class="py-24 bg-[#080809] border-y border-app-border relative z-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col items-center text-center gap-4 mb-16" data-aos="fade-up">
+        <h2 class="text-3xl font-semibold text-white tracking-tight">Source Architecture</h2>
+        <p class="text-sm text-app-muted max-w-2xl font-light">
+          Examining the blueprint for the decoupled UI Event Subsystem. Utilizing Unreal's <code class="text-white">UGameInstanceSubsystem</code> to globally route application states without inter-actor dependencies.
+        </p>
+      </div>
+
+      <div class="max-w-4xl mx-auto rounded-2xl glass-panel border border-white/10 overflow-hidden shadow-2xl shadow-black interactive cursor-default" data-aos="fade-up" data-aos-delay="100">
+        <!-- Fake Mac Window Header -->
+        <div class="bg-[#121215] px-4 py-3 border-b border-white/5 flex items-center gap-2">
+          <div class="flex gap-1.5">
+            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+            <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+          </div>
+          <div class="mx-auto text-[11px] font-mono text-app-muted opacity-60">UIEventSubsystem.h — C++ Header</div>
+        </div>
+        
+        <div class="p-6 overflow-x-auto text-[13px] font-mono">
+<pre><code class="language-cpp">// Architecture: Decoupled UI Subsystem
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Subsystems/GameInstanceSubsystem.h"
+#include "UIEventSubsystem.generated.h"
+
+UENUM(BlueprintType)
+enum class EUIState : uint8 {
+    MainMenu,
+    Gameplay,
+    Pause,
+    Inventory,
+    Dialog
+};
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUIStateRequested, EUIState, NewState);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnUIGoBackRequested);
+
+UCLASS()
+class UUIEventSubsystem : public UGameInstanceSubsystem {
+    GENERATED_BODY()
+
+public:
+    UPROPERTY(BlueprintAssignable)
+    FOnUIStateRequested OnUIStateRequested;
+
+    UFUNCTION(BlueprintCallable, Category = "UI Interface")
+    void TransitionState(EUIState TargetState) {
+        ActiveState = TargetState;
+        OnUIStateRequested.Broadcast(TargetState);
+    }
+
+private:
+    EUIState ActiveState = EUIState::MainMenu;
+};</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO GRID -->
+  <section id="portfolio" class="py-24 px-6 max-w-7xl mx-auto relative z-10">
+    <div class="mb-16" data-aos="fade-up">
+      <h2 class="text-3xl font-semibold text-white tracking-tight">Expanded Portfolio</h2>
+      <p class="text-sm text-app-muted mt-2 font-light">Categorized developments across shading, networking, and team operations.</p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Card 1 -->
+      <div class="glass-panel p-8 rounded-3xl hover-glow transition duration-300 interactive cursor-default flex flex-col justify-between" data-aos="fade-up">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6">
+            <i data-lucide="zap" class="w-5 h-5 text-white"></i>
+          </div>
+          <h3 class="text-lg font-medium text-white mb-3">Real-Time VFX & Shaders</h3>
+          <p class="text-sm text-app-muted leading-relaxed font-light mb-6">
+            Authored complex material graphs featuring world-space UV masking, glass refraction, and emissive pulsing. Built accompanying Niagara systems for ambient atmospherics and combat spell triggers.
+          </p>
+        </div>
+        <div class="text-[10px] font-mono text-app-muted uppercase tracking-widest border-t border-white/5 pt-4">
+          Tech: Unreal Engine / Niagara / HLSL logic
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="glass-panel p-8 rounded-3xl hover-glow transition duration-300 interactive cursor-default flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6">
+            <i data-lucide="globe-2" class="w-5 h-5 text-white"></i>
+          </div>
+          <h3 class="text-lg font-medium text-white mb-3">Socket Programming & Netcode</h3>
+          <p class="text-sm text-app-muted leading-relaxed font-light mb-6">
+            Engineered a client-server layer mapping raw packet serialization, continuous session synchronization, and reconnection handshakes. Designed fault-tolerant caching to prevent packet loss.
+          </p>
+        </div>
+        <div class="text-[10px] font-mono text-app-muted uppercase tracking-widest border-t border-white/5 pt-4">
+          Tech: C++ / C# / Network Sockets
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="glass-panel p-8 rounded-3xl hover-glow transition duration-300 interactive cursor-default flex flex-col justify-between" data-aos="fade-up">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6">
+            <i data-lucide="git-branch" class="w-5 h-5 text-white"></i>
+          </div>
+          <h3 class="text-lg font-medium text-white mb-3">Agile Version Control</h3>
+          <p class="text-sm text-app-muted leading-relaxed font-light mb-6">
+            Managed multi-developer prototype deliveries enforcing strict milestone tracking, git branch policies, pull request reviews, and systematic merge conflict resolutions within structured sprints.
+          </p>
+        </div>
+        <div class="text-[10px] font-mono text-app-muted uppercase tracking-widest border-t border-white/5 pt-4">
+          Tech: Git / GitHub / Agile Scrum
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="glass-panel p-8 rounded-3xl hover-glow transition duration-300 interactive cursor-default flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6">
+            <i data-lucide="database" class="w-5 h-5 text-white"></i>
+          </div>
+          <h3 class="text-lg font-medium text-white mb-3">Data-Oriented Architectures</h3>
+          <p class="text-sm text-app-muted leading-relaxed font-light mb-6">
+            Converted rigid gameplay code into modular, designer-friendly Data Tables and Data Assets. This framework dynamically updates item attributes, quest logs, and dialogue without altering C++ source.
+          </p>
+        </div>
+        <div class="text-[10px] font-mono text-app-muted uppercase tracking-widest border-t border-white/5 pt-4">
+          Tech: UE5 / Structs / GameInstance
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLKIT / SKILLS -->
+  <section id="stack" class="py-24 bg-[#080809] border-y border-app-border relative z-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="mb-16 text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-semibold text-white tracking-tight">Technical Stack</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <!-- Col 1 -->
+        <div data-aos="fade-up" data-aos-delay="0">
+          <div class="text-[11px] font-mono text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-3 flex items-center gap-2"><i data-lucide="terminal-square" class="w-3.5 h-3.5"></i> Core Engines</div>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>Unreal Engine 5</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Advanced</span></li>
+            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>Unreal Engine 4</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Advanced</span></li>
+            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>Unity3D</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Proficient</span></li>
+          </ul>
+        </div>
+        
+        <!-- Col 2 -->
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div class="text-[11px] font-mono text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-3 flex items-center gap-2"><i data-lucide="code" class="w-3.5 h-3.5"></i> Languages</div>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>C++</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Advanced</span></li>
+            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>C#</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Proficient</span></li>
+            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>Python / Java</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Working</span></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div data-aos="fade-up" data-aos-delay="200">
+          <div class="text-[11px] font-mono text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-3 flex items-center gap-2"><i data-lucide="wrench" class="w-3.5 h-3.5"></i> Software & Tools</div>
+          <ul class="space-y-4">
+            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>JetBrains Rider & VS</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Daily</span></li>
+            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>Git / GitHub</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Advanced</span></li>
+            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>PlayFab SDK</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Proficient</span></li>
+            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>Blender 3D</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Working</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VAULT / CTA -->
+  <section id="vault" class="py-32 px-6 max-w-7xl mx-auto relative z-10 text-center">
+    <div class="glass-panel p-12 md:p-20 rounded-[3rem] border border-white/10 hover-glow transition duration-700 relative overflow-hidden" data-aos="zoom-in">
+      <div class="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent z-0 pointer-events-none"></div>
       
-      <!-- Project 1: Shaders & VFX -->
-      <div class="p-7 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/50 transition duration-300 hover:-translate-y-1 space-y-4 group" data-aos="fade-up" data-aos-delay="100">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold text-white group-hover:text-brand-gold transition">Real-Time Shaders & Niagara VFX Pipeline</h3>
-          <span class="text-xs font-mono px-2.5 py-1 rounded bg-brand-gold/10 text-brand-gold border border-brand-gold/30">UE5 / Shaders</span>
+      <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
+        <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-8 border border-white/20">
+          <i data-lucide="lock" class="w-6 h-6 text-white"></i>
         </div>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Authored real-time materials including world-space UV projections, emissive pulse logic, stained glass refraction shaders, and dissolve volume masks. Created multi-emitter Niagara particle systems for ambient atmospheric dust and stylized interactive spell circles.
+        <h2 class="text-3xl sm:text-5xl font-semibold text-white tracking-tight mb-6">Access the Full Drive Vault.</h2>
+        <p class="text-app-muted text-sm sm:text-base font-light mb-10">
+          Direct access to the Google Drive cloud repository. Contains all raw project files, executable builds, exhaustive Game Design Documents, comprehensive technical reports, academic records, and CV variants.
         </p>
-        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-400">
-          <span class="px-2 py-0.5 rounded bg-white/5">#NiagaraVFX</span>
-          <span class="px-2 py-0.5 rounded bg-white/5">#MaterialGraph</span>
-          <span class="px-2 py-0.5 rounded bg-white/5">#LumenLighting</span>
-          <span class="px-2 py-0.5 rounded bg-white/5">#ShaderLogic</span>
-        </div>
-      </div>
-
-      <!-- Project 2: Network & Socket Programming -->
-      <div class="p-7 rounded-2xl bg-brand-card border border-brand-border hover:border-white/50 transition duration-300 hover:-translate-y-1 space-y-4 group" data-aos="fade-up" data-aos-delay="200">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold text-white group-hover:text-white transition">Multiplayer Socket & Session Architecture</h3>
-          <span class="text-xs font-mono px-2.5 py-1 rounded bg-white/5 text-white border border-white/20">C++ / C# / Network</span>
-        </div>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Engineered a client-server socket communication framework handling custom binary/JSON packet serialization, session state synchronization, and reconnection handshakes. Implemented packet-loss mitigation, client-side predictive verification, and reconnection recovery.
-        </p>
-        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-400">
-          <span class="px-2 py-0.5 rounded bg-white/5">#GameNetworking</span>
-          <span class="px-2 py-0.5 rounded bg-white/5">#SocketProgramming</span>
-          <span class="px-2 py-0.5 rounded bg-white/5">#DataSerialization</span>
-        </div>
-      </div>
-
-      <!-- Project 3: Data-Driven Quest & Dialogue Engine -->
-      <div class="p-7 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/50 transition duration-300 hover:-translate-y-1 space-y-4 group" data-aos="fade-up" data-aos-delay="100">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold text-white group-hover:text-brand-gold transition">Data-Driven Quest & Dialogue Systems</h3>
-          <span class="text-xs font-mono px-2.5 py-1 rounded bg-brand-gold/10 text-brand-gold border border-brand-gold/30">C++ / UE5</span>
-        </div>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Designed modular Data Table (<code class="text-brand-gold font-mono">DT_</code>) and Data Asset (<code class="text-brand-gold font-mono">DA_</code>) systems in UE5 to drive narrative trees, multi-stage quest progression, audio voice line triggers, and player attribute points without code recompilation.
-        </p>
-        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-400">
-          <span class="px-2 py-0.5 rounded bg-white/5">#DataTables</span>
-          <span class="px-2 py-0.5 rounded bg-white/5">#GameplayFramework</span>
-          <span class="px-2 py-0.5 rounded bg-white/5">#GameInstance</span>
-        </div>
-      </div>
-
-      <!-- Project 4: Collaborative Games Delivery -->
-      <div class="p-7 rounded-2xl bg-brand-card border border-brand-border hover:border-white/50 transition duration-300 hover:-translate-y-1 space-y-4 group" data-aos="fade-up" data-aos-delay="200">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold text-white group-hover:text-white transition">Agile Group Game Development & Repos</h3>
-          <span class="text-xs font-mono px-2.5 py-1 rounded bg-white/5 text-white border border-white/20">C++ / Git & GitHub</span>
-        </div>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Collaborated within multi-developer teams to deliver structured gameplay prototypes under milestone deadlines. Managed GitHub repository branching workflows, pull request reviews, merge conflicts, and automated asset integration guidelines.
-        </p>
-        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-400">
-          <span class="px-2 py-0.5 rounded bg-white/5">#GitWorkflows</span>
-          <span class="px-2 py-0.5 rounded bg-white/5">#AgileSprints</span>
-          <span class="px-2 py-0.5 rounded bg-white/5">#TeamDelivery</span>
-        </div>
-      </div>
-
-      <!-- Project 5: Cloud & Backend Economy -->
-      <div class="p-7 rounded-2xl bg-brand-card border border-brand-border hover:border-brand-gold/50 transition duration-300 hover:-translate-y-1 space-y-4 group" data-aos="fade-up" data-aos-delay="100">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold text-white group-hover:text-brand-gold transition">Live-Ops Economy & Cloud Persistence</h3>
-          <span class="text-xs font-mono px-2.5 py-1 rounded bg-brand-gold/10 text-brand-gold border border-brand-gold/30">PlayFab SDK / JSON</span>
-        </div>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Integrated Microsoft PlayFab SDK to handle client authentication, user account IDs, multi-currency shop inventories, and cloud statistic uploading, paired with local SaveGame caching routines for offline robustness.
-        </p>
-        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-400">
-          <span class="px-2 py-0.5 rounded bg-white/5">#CloudBackend</span>
-          <span class="px-2 py-0.5 rounded bg-white/5">#EconomyDesign</span>
-          <span class="px-2 py-0.5 rounded bg-white/5">#PlayFabSDK</span>
-        </div>
-      </div>
-
-      <!-- Project 6: Level 3 Diploma Extended Project -->
-      <div class="p-7 rounded-2xl bg-brand-card border border-brand-border hover:border-white/50 transition duration-300 hover:-translate-y-1 space-y-4 group" data-aos="fade-up" data-aos-delay="200">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold text-white group-hover:text-white transition">3D Game Prototyping & Animation Pipeline</h3>
-          <span class="text-xs font-mono px-2.5 py-1 rounded bg-white/5 text-white border border-white/20">Unity / UE4 / Distinction</span>
-        </div>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Produced end-to-end interactive prototypes utilizing Unity (C#) and Unreal Engine (C++). Built custom 3D low-poly and high-poly environmental models in Blender, UV unwrapping, weight painting, and character animation integration.
-        </p>
-        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-400">
-          <span class="px-2 py-0.5 rounded bg-white/5">#Unity3D</span>
-          <span class="px-2 py-0.5 rounded bg-white/5">#Blender3D</span>
-          <span class="px-2 py-0.5 rounded bg-white/5">#GameArtPipeline</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SKILLS & PROFICIENCIES -->
-  <section id="skills" class="py-24 px-6 max-w-7xl mx-auto border-t border-brand-border">
-    <div class="flex flex-col gap-3 mb-12" data-aos="fade-up">
-      <div class="text-xs font-mono text-brand-gold uppercase tracking-wider">Technical Toolkit</div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Skills & Competencies</h2>
-      <p class="text-slate-400 max-w-2xl">
-        Comprehensive software development toolkit covering game engines, systems programming, technical art, and production lifecycles.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      
-      <!-- Card 1: Programming & Engines -->
-      <div class="p-7 rounded-2xl bg-brand-card border border-brand-border space-y-4 hover:border-brand-gold/40 transition" data-aos="fade-up" data-aos-delay="100">
-        <h3 class="text-sm font-mono font-bold text-white flex items-center gap-2">
-          <i data-lucide="code-2" class="w-4 h-4 text-brand-gold"></i> Programming & Engines
-        </h3>
-        <ul class="space-y-3 text-sm text-slate-300">
-          <li class="flex items-center justify-between"><span>C++ (Modern / Engine Level)</span> <span class="text-xs font-mono text-brand-gold">Advanced</span></li>
-          <li class="flex items-center justify-between"><span>C# (Unity / Tools)</span> <span class="text-xs font-mono text-brand-gold">Proficient</span></li>
-          <li class="flex items-center justify-between"><span>Python & Java</span> <span class="text-xs font-mono text-slate-400">Intermediate</span></li>
-          <li class="flex items-center justify-between"><span>Unreal Engine 5 (UE 5.7)</span> <span class="text-xs font-mono text-brand-gold">Advanced</span></li>
-          <li class="flex items-center justify-between"><span>Unity</span> <span class="text-xs font-mono text-slate-400">Proficient</span></li>
-          <li class="flex items-center justify-between"><span>Data Structures & Algorithms</span> <span class="text-xs font-mono text-brand-gold">Core</span></li>
-        </ul>
-      </div>
-
-      <!-- Card 2: Systems, VFX & Technical Art -->
-      <div class="p-7 rounded-2xl bg-brand-card border border-brand-border space-y-4 hover:border-brand-gold/40 transition" data-aos="fade-up" data-aos-delay="200">
-        <h3 class="text-sm font-mono font-bold text-white flex items-center gap-2">
-          <i data-lucide="sparkles" class="w-4 h-4 text-white"></i> Systems & Technical Art
-        </h3>
-        <ul class="space-y-3 text-sm text-slate-300">
-          <li class="flex items-center justify-between"><span>Niagara VFX & Particles</span> <span class="text-xs font-mono text-white">Proficient</span></li>
-          <li class="flex items-center justify-between"><span>Material Shaders & Post-Process</span> <span class="text-xs font-mono text-white">Proficient</span></li>
-          <li class="flex items-center justify-between"><span>Dynamic Multicast Delegates</span> <span class="text-xs font-mono text-brand-gold">Advanced</span></li>
-          <li class="flex items-center justify-between"><span>Data Tables & Data Assets</span> <span class="text-xs font-mono text-brand-gold">Advanced</span></li>
-          <li class="flex items-center justify-between"><span>Blender (3D Modeling, UVs)</span> <span class="text-xs font-mono text-slate-400">Intermediate</span></li>
-          <li class="flex items-center justify-between"><span>MetaHuman Animator & Sequencer</span> <span class="text-xs font-mono text-slate-400">Proficient</span></li>
-        </ul>
-      </div>
-
-      <!-- Card 3: Backend, QA & Production -->
-      <div class="p-7 rounded-2xl bg-brand-card border border-brand-border space-y-4 hover:border-brand-gold/40 transition" data-aos="fade-up" data-aos-delay="300">
-        <h3 class="text-sm font-mono font-bold text-white flex items-center gap-2">
-          <i data-lucide="layers" class="w-4 h-4 text-brand-gold"></i> Tools, Backend & QA
-        </h3>
-        <ul class="space-y-3 text-sm text-slate-300">
-          <li class="flex items-center justify-between"><span>Microsoft PlayFab Cloud SDK</span> <span class="text-xs font-mono text-brand-gold">Proficient</span></li>
-          <li class="flex items-center justify-between"><span>Git & GitHub Version Control</span> <span class="text-xs font-mono text-brand-gold">Advanced</span></li>
-          <li class="flex items-center justify-between"><span>Visual Studio & Rider</span> <span class="text-xs font-mono text-slate-400">Daily Driver</span></li>
-          <li class="flex items-center justify-between"><span>White-Box & Black-Box QA</span> <span class="text-xs font-mono text-brand-gold">Core</span></li>
-          <li class="flex items-center justify-between"><span>Memory & Draw Call Profiling</span> <span class="text-xs font-mono text-slate-400">Proficient</span></li>
-          <li class="flex items-center justify-between"><span>Agile Lifecycle & Scope Control</span> <span class="text-xs font-mono text-brand-gold">Core</span></li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- DOCUMENT VAULT -->
-  <section id="documents" class="py-24 px-6 max-w-7xl mx-auto border-t border-brand-border">
-    <div class="flex flex-col gap-3 mb-12" data-aos="fade-up">
-      <div class="text-xs font-mono text-brand-gold uppercase tracking-wider flex items-center gap-2">
-        <i data-lucide="folder-down" class="w-4 h-4"></i> Download Center
-      </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Curriculum Vitae & Verified Documents</h2>
-      <p class="text-slate-400 max-w-2xl">
-        Download specialized CVs, full engineering dissertations, and official university academic transcripts.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <!-- Doc 1: Software Engineering CV -->
-      <div class="p-6 rounded-2xl bg-brand-card border border-brand-border flex flex-col justify-between gap-5 hover:border-brand-gold/40 transition duration-300 group" data-aos="fade-up" data-aos-delay="100">
-        <div class="space-y-2.5">
-          <div class="p-3 rounded-xl bg-brand-gold/10 text-brand-gold w-fit border border-brand-gold/20 group-hover:scale-110 transition">
-            <i data-lucide="file-code" class="w-5 h-5"></i>
-          </div>
-          <h4 class="font-bold text-white text-base">Game Dev / Software CV</h4>
-          <p class="text-xs text-slate-400">Targeted for Gameplay, Engine, Systems, and C++ Roles.</p>
-        </div>
-        <a href="documents/Software-Engineering-Intern-CV.pdf" download class="w-full py-2.5 text-center text-xs font-mono font-medium rounded-lg bg-brand-dark border border-brand-border text-slate-300 hover:border-brand-gold hover:text-brand-gold transition flex items-center justify-center gap-2">
-          <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
-        </a>
-      </div>
-
-      <!-- Doc 2: Project Management / Production CV -->
-      <div class="p-6 rounded-2xl bg-brand-card border border-brand-border flex flex-col justify-between gap-5 hover:border-white/40 transition duration-300 group" data-aos="fade-up" data-aos-delay="200">
-        <div class="space-y-2.5">
-          <div class="p-3 rounded-xl bg-white/5 text-white w-fit border border-white/20 group-hover:scale-110 transition">
-            <i data-lucide="briefcase" class="w-5 h-5"></i>
-          </div>
-          <h4 class="font-bold text-white text-base">Game Production / PM CV</h4>
-          <p class="text-xs text-slate-400">Targeted for Production, QA, and Technical Project Management.</p>
-        </div>
-        <a href="documents/Project-Management-Intern-CV.pdf" download class="w-full py-2.5 text-center text-xs font-mono font-medium rounded-lg bg-brand-dark border border-brand-border text-slate-300 hover:border-white hover:text-white transition flex items-center justify-center gap-2">
-          <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
-        </a>
-      </div>
-
-      <!-- Doc 3: FYP Dissertation Report -->
-      <div class="p-6 rounded-2xl bg-brand-card border border-brand-border flex flex-col justify-between gap-5 hover:border-brand-gold/40 transition duration-300 group" data-aos="fade-up" data-aos-delay="300">
-        <div class="space-y-2.5">
-          <div class="p-3 rounded-xl bg-brand-gold/10 text-brand-gold w-fit border border-brand-gold/20 group-hover:scale-110 transition">
-            <i data-lucide="book-open" class="w-5 h-5"></i>
-          </div>
-          <h4 class="font-bold text-white text-base">BSc Final Project Report</h4>
-          <p class="text-xs text-slate-400">Complete 13,013-word technical report (Awarded First Class Honours).</p>
-        </div>
-        <a href="documents/W1826061-Final-Report.pdf" download class="w-full py-2.5 text-center text-xs font-mono font-medium rounded-lg bg-brand-dark border border-brand-border text-slate-300 hover:border-brand-gold hover:text-brand-gold transition flex items-center justify-center gap-2">
-          <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
-        </a>
-      </div>
-
-      <!-- Doc 4: Academic Results Transcript -->
-      <div class="p-6 rounded-2xl bg-brand-card border border-brand-border flex flex-col justify-between gap-5 hover:border-white/40 transition duration-300 group" data-aos="fade-up" data-aos-delay="400">
-        <div class="space-y-2.5">
-          <div class="p-3 rounded-xl bg-white/5 text-white w-fit border border-white/20 group-hover:scale-110 transition">
-            <i data-lucide="award" class="w-5 h-5"></i>
-          </div>
-          <h4 class="font-bold text-white text-base">Westminster Transcript</h4>
-          <p class="text-xs text-slate-400">Official university confirmation of First Class Honours award.</p>
-        </div>
-        <a href="documents/Academic-Results-Westminster.pdf" download class="w-full py-2.5 text-center text-xs font-mono font-medium rounded-lg bg-brand-dark border border-brand-border text-slate-300 hover:border-white hover:text-white transition flex items-center justify-center gap-2">
-          <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+        <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="px-8 py-4 rounded-full bg-white text-black font-semibold text-xs font-mono uppercase tracking-widest hover:scale-105 transition duration-300 flex items-center gap-3 interactive shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:shadow-[0_0_50px_rgba(255,255,255,0.5)]">
+          <i data-lucide="external-link" class="w-4 h-4"></i> Open Shared Directory
         </a>
       </div>
     </div>
   </section>
 
-  <!-- EDUCATION & EXPERIENCE TIMELINE -->
-  <section id="education" class="py-24 px-6 max-w-7xl mx-auto border-t border-brand-border">
-    <div class="flex flex-col gap-3 mb-12" data-aos="fade-up">
-      <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Background</div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Education & Experience</h2>
-    </div>
-
-    <div class="space-y-6 max-w-4xl">
-      <!-- Degree -->
-      <div class="p-7 rounded-2xl bg-brand-card border border-brand-border space-y-2.5 hover:border-brand-gold/40 transition" data-aos="fade-up">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-brand-gold">
-          <span>University of Westminster, London</span>
-          <span>2021 – 2026</span>
-        </div>
-        <h3 class="text-lg font-bold text-white">BSc (Hons) in Computer Games Development – First Class Honours</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Completed degree with First Class standing. Core completed modules include Computer Games Development Final Project, Programming Methodology I & II, Introduction to Shaders and VFX, Game Programming Patterns, Game Engine Architecture, Applied Mathematics, Game AI, and Games Networking & Security.
-        </p>
+  <!-- FOOTER -->
+  <footer class="py-12 px-6 border-t border-app-border bg-black relative z-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3 opacity-70 hover:opacity-100 transition interactive cursor-default">
+        <i data-lucide="hexagon" class="w-4 h-4 text-white"></i>
+        <div class="text-xs font-mono text-white tracking-widest uppercase">Leilani Bennett</div>
       </div>
-
-      <!-- Diploma -->
-      <div class="p-7 rounded-2xl bg-brand-card border border-brand-border space-y-2.5 hover:border-white/40 transition" data-aos="fade-up">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-white">
-          <span>Uxbridge College, London</span>
-          <span>2019 – 2021</span>
-        </div>
-        <h3 class="text-lg font-bold text-white">AIM Level 3 Extended Diploma in Games, Animation and VFX – Distinction</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Two-year extended diploma covering C++ and C# game development, Unity and Unreal Engine pipelines, 3D asset creation in Blender, and mathematical problem-solving.
-        </p>
-      </div>
-
-      <!-- Professional Background -->
-      <div class="p-7 rounded-2xl bg-brand-card border border-brand-border space-y-2.5 hover:border-slate-400/40 transition" data-aos="fade-up">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-slate-400">
-          <span>Next, CeX, Arvato CRM (BMW Group)</span>
-          <span>2022 – Present</span>
-        </div>
-        <h3 class="text-lg font-bold text-white">Professional Operations & Technical Customer Support</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Utilized enterprise inventory control databases, verified device hardware diagnostics, and managed technical case tracking, consistently meeting and surpassing operational SLA benchmarks.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER / CONTACT -->
-  <footer class="py-14 px-6 border-t border-brand-border bg-brand-dark">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
-      <div class="space-y-1">
-        <div class="text-base font-bold text-white">Leilani Bennett</div>
-        <div class="text-xs text-slate-400 font-mono">London, UK • rosezelda51@gmail.com</div>
-      </div>
-      <div class="flex items-center gap-6 text-slate-300 text-sm">
-        <a href="#hero" class="hover:text-brand-gold transition">Back to Top</a>
-        <a href="https://github.com" target="_blank" class="hover:text-brand-gold transition">GitHub</a>
-        <a href="https://linkedin.com" target="_blank" class="hover:text-brand-gold transition">LinkedIn</a>
-        <a href="mailto:rosezelda51@gmail.com" class="hover:text-brand-gold transition">Email</a>
+      <div class="flex items-center gap-8 text-[10px] font-mono uppercase tracking-widest text-app-muted">
+        <a href="#home" class="hover:text-white transition interactive">Scroll Top</a>
+        <a href="https://github.com" target="_blank" class="hover:text-white transition interactive">GitHub</a>
+        <a href="mailto:rosezelda51@gmail.com" class="hover:text-white transition interactive">Email</a>
       </div>
     </div>
   </footer>
 
-  <!-- AOS Script Init -->
+  <!-- Scripts Setup -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+  
   <script>
-    AOS.init({
-      once: true,
-      duration: 800,
-      easing: 'ease-out-cubic'
-    });
+    // Initialize AOS
+    AOS.init({ once: true, duration: 800, easing: 'ease-out-expo' });
     lucide.createIcons();
+
+    // --- Audio System Setup ---
+    const audioToggleBtn = document.getElementById('audio-toggle');
+    const audioLabel = document.getElementById('audio-label');
+    const bgm = document.getElementById('bg-music');
+    const sfxHover = document.getElementById('sfx-hover');
+    const sfxClick = document.getElementById('sfx-click');
+    
+    let isMuted = true;
+    bgm.volume = 0.15; // Keep BGM subtle
+    sfxHover.volume = 0.1;
+    sfxClick.volume = 0.3;
+
+    // Toggle Global Audio
+    audioToggleBtn.addEventListener('click', () => {
+      isMuted = !isMuted;
+      if(isMuted) {
+        bgm.pause();
+        audioToggleBtn.classList.add('muted');
+        audioLabel.innerText = "Sound Off";
+      } else {
+        bgm.play().catch(e => console.log("Audio play blocked by browser:", e));
+        audioToggleBtn.classList.remove('muted');
+        audioLabel.innerText = "Sound On";
+      }
+    });
+
+    // SFX Attachments
+    const interactiveElements = document.querySelectorAll('.interactive');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        if(!isMuted) {
+          sfxHover.currentTime = 0;
+          sfxHover.play().catch(()=>{});
+        }
+      });
+      el.addEventListener('click', () => {
+        if(!isMuted && el !== audioToggleBtn) {
+          sfxClick.currentTime = 0;
+          sfxClick.play().catch(()=>{});
+        }
+      });
+    });
+
+    // --- Custom Cursor Logic ---
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorRing = document.getElementById('cursor-ring');
+    let mouseX = 0, mouseY = 0;
+    let ringX = 0, ringY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      // Instant movement for the dot
+      cursorDot.style.left = `${mouseX}px`;
+      cursorDot.style.top = `${mouseY}px`;
+    });
+
+    // Smooth movement for the ring
+    function renderCursor() {
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      cursorRing.style.left = `${ringX}px`;
+      cursorRing.style.top = `${ringY}px`;
+      requestAnimationFrame(renderCursor);
+    }
+    requestAnimationFrame(renderCursor);
+
+    // Cursor hover effects
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+    });
   </script>
 </body>
 </html>
