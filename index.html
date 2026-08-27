@@ -1,647 +1,1263 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leilani Bennett | Software Engineer & Games Developer</title>
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-  
-  <!-- Icons & Animations -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leilani Bennett · Software Engineer & Games Developer</title>
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            app: {
-              bg: '#050505',
-              surface: '#0d0d0f',
-              panel: '#121215',
-              border: '#222226',
-              text: '#e4e4e7',
-              muted: '#8b8b93',
-              glow: 'rgba(255, 255, 255, 0.08)'
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&family=JetBrains+Mono:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest">
+    </script>
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Prism -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        app: {
+                            bg: '#050505',
+                            surface: '#0a0a0e',
+                            panel: '#0f0f14',
+                            border: '#1a1a22',
+                            text: '#f5f5f7',
+                            muted: '#8a8a96',
+                            glow: 'rgba(255,255,255,0.02)',
+                            accent: '#6c8cff',
+                            accent2: '#a78bfa',
+                            accent3: '#34d399',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 7s ease-in-out infinite',
+                        'float-slow': 'float 12s ease-in-out infinite',
+                        'pulse-ring': 'pulseRing 2.5s cubic-bezier(0.4,0,0.6,1) infinite',
+                        'gradient-shift': 'gradientShift 8s ease-in-out infinite alternate',
+                        'scanline': 'scanline 12s linear infinite',
+                        'glitch': 'glitch 0.25s cubic-bezier(.25,.46,.45,.94) both infinite',
+                        'typing': 'typing 3s steps(40, end), blink .7s step-end infinite',
+                        'fade-up': 'fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'scale-in': 'scaleIn 0.6s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'shimmer': 'shimmer 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-14px)' } },
+                        pulseRing: { '0%': { transform: 'scale(0.95)', opacity: '0.3' }, '50%': { transform: 'scale(1.05)', opacity: '0.6' }, '100%': { transform: 'scale(0.95)', opacity: '0.3' } },
+                        gradientShift: { '0%': { backgroundPosition: '0% 50%' }, '100%': { backgroundPosition: '100% 50%' } },
+                        scanline: { '0%': { transform: 'translateY(-100%)' }, '100%': { transform: 'translateY(100vh)' } },
+                        glitch: { '0%': { transform: 'translate(0)' }, '20%': { transform: 'translate(-2px,1px)' }, '40%': { transform: 'translate(-1px,-1px)' }, '60%': { transform: 'translate(2px,1px)' }, '80%': { transform: 'translate(1px,-1px)' }, '100%': { transform: 'translate(0)' } },
+                        typing: { from: { width: '0' }, to: { width: '100%' } },
+                        blink: { 'from,to': { borderColor: 'transparent' }, '50%': { borderColor: 'white' } },
+                        fadeUp: { from: { opacity: '0', transform: 'translateY(30px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
+                        scaleIn: { from: { opacity: '0', transform: 'scale(0.9)' }, to: { opacity: '1', transform: 'scale(1)' } },
+                        shimmer: { '0%': { opacity: '0.4' }, '50%': { opacity: '0.8' }, '100%': { opacity: '0.4' } },
+                    }
+                }
             }
-          },
-          animation: {
-            'spin-slow': 'spin 12s linear infinite',
-            'float': 'float 6s ease-in-out infinite',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-10px)' },
-            }
-          }
         }
-      }
-    }
-  </script>
+    </script>
 
-  <style>
-    body {
-      background-color: #050505;
-      color: #e4e4e7;
-      overflow-x: hidden;
-      cursor: none; /* Hide default cursor for custom dot */
-    }
+    <style>
+        /* ── Reset & Base ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #050505;
+            color: #f5f5f7;
+            overflow-x: hidden;
+            cursor: none;
+            font-family: 'Inter', sans-serif;
+        }
+        ::selection {
+            background: rgba(108, 140, 255, 0.3);
+            color: #fff;
+        }
 
-    /* Custom Cursor */
-    #cursor-dot {
-      position: fixed;
-      width: 6px;
-      height: 6px;
-      background-color: white;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.2s, height 0.2s, background-color 0.2s;
-    }
-    #cursor-ring {
-      position: fixed;
-      width: 32px;
-      height: 32px;
-      border: 1px solid rgba(255,255,255,0.3);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: transform 0.15s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
-    }
-    
-    /* Interactive Hover States for Cursor */
-    body.hovering #cursor-dot { width: 0px; height: 0px; }
-    body.hovering #cursor-ring { width: 48px; height: 48px; border-color: white; background-color: rgba(255,255,255,0.05); }
+        /* ── Scrollbar ── */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a36;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6c8cff;
+        }
 
-    /* Animated Dark Grid Background */
-    .bg-cyber-grid {
-      background-size: 50px 50px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-    }
+        /* ── Preloader ── */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: #050505;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.9s cubic-bezier(0.8, 0, 0.2, 1), visibility 0.9s;
+        }
+        #preloader .loader-ring {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.04);
+            border-top-color: #6c8cff;
+            animation: spin 1s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+            margin-bottom: 28px;
+            box-shadow: 0 0 40px rgba(108, 140, 255, 0.08);
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        #preloader .loader-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: #8a8a96;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+        #preloader .loader-progress {
+            width: 160px;
+            height: 1px;
+            background: #1a1a22;
+            border-radius: 2px;
+            margin-top: 18px;
+            overflow: hidden;
+        }
+        #preloader .loader-progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #6c8cff, #a78bfa);
+            border-radius: 2px;
+            transition: width 0.15s ease-out;
+        }
 
-    /* Glassmorphism & Glows */
-    .glass-panel {
-      background: rgba(18, 18, 21, 0.6);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .hover-glow:hover {
-      box-shadow: 0 0 40px -10px rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.2);
-    }
+        /* ── Cursor ── */
+        #cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 5px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+            transition: width 0.25s cubic-bezier(0.2, 1, 0.2, 1), height 0.25s cubic-bezier(0.2, 1, 0.2, 1), background 0.25s;
+        }
+        #cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 34px;
+            height: 34px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+            transition: width 0.35s cubic-bezier(0.2, 1, 0.2, 1), height 0.35s cubic-bezier(0.2, 1, 0.2, 1), border-color 0.35s, opacity 0.35s;
+        }
+        body.hovering #cursor-dot {
+            width: 44px;
+            height: 44px;
+            background: rgba(108, 140, 255, 0.8);
+        }
+        body.hovering #cursor-ring {
+            width: 0;
+            height: 0;
+            opacity: 0;
+        }
+        body.clicking #cursor-dot {
+            width: 16px;
+            height: 16px;
+            background: #a78bfa;
+        }
 
-    /* Typography Gradients */
-    .text-gradient-silver {
-      background: linear-gradient(180deg, #ffffff 0%, #71717a 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    
-    /* Syntax Highlighting overrides */
-    pre[class*="language-"] { background: #0a0a0c !important; border: 1px solid #222226 !important; border-radius: 1rem !important; }
+        /* ── Scroll Progress ── */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #6c8cff, #a78bfa, #34d399);
+            z-index: 9999;
+            width: 0%;
+            box-shadow: 0 0 20px rgba(108, 140, 255, 0.3);
+            transition: width 0.08s ease-out;
+        }
 
-    /* Audio Toggle Pulse */
-    .audio-waves span {
-      display: block; width: 3px; height: 12px; background: white; border-radius: 2px;
-      animation: wave 1s ease-in-out infinite alternate;
-    }
-    .audio-waves span:nth-child(2) { animation-delay: 0.2s; }
-    .audio-waves span:nth-child(3) { animation-delay: 0.4s; }
-    @keyframes wave { 0% { height: 4px; } 100% { height: 16px; } }
-    .muted .audio-waves span { animation: none; height: 4px; background: #555; }
-  </style>
+        /* ── BG Canvas ── */
+        #bg-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ── Grid Overlay ── */
+        .bg-grid {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
+            background-size: 70px 70px;
+            mask-image: radial-gradient(ellipse at 50% 50%, black 15%, transparent 75%);
+            -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 15%, transparent 75%);
+        }
+
+        /* ── Glass ── */
+        .glass-panel {
+            background: rgba(10, 10, 14, 0.5);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .glass-panel-light {
+            background: rgba(15, 15, 20, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        /* ── Tilt Cards ── */
+        .tilt-card {
+            transition: box-shadow 0.5s ease, border-color 0.5s ease;
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+        .tilt-card:hover {
+            box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.9), 0 0 60px -20px rgba(108, 140, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+        .tilt-content {
+            transform: translateZ(30px);
+        }
+        .tilt-bg {
+            transform: translateZ(-20px);
+        }
+
+        /* ── Magnetic ── */
+        .magnetic {
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            will-change: transform;
+        }
+
+        /* ── Gradients ── */
+        .text-gradient-primary {
+            background: linear-gradient(135deg, #ffffff 0%, #b8b8d0 45%, #6c8cff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .text-gradient-accent {
+            background: linear-gradient(135deg, #6c8cff, #a78bfa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% 200%;
+            animation: gradientShift 5s ease-in-out infinite alternate;
+        }
+        .border-gradient {
+            border-image: linear-gradient(135deg, #6c8cff, #a78bfa) 1;
+        }
+
+        /* ── Glow Orbs ── */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            opacity: 0.15;
+            animation: float-slow 12s ease-in-out infinite alternate;
+        }
+
+        /* ── Audio Waves ── */
+        .audio-waves span {
+            display: block;
+            width: 2px;
+            background: #fff;
+            border-radius: 2px;
+            animation: wave 1s ease-in-out infinite alternate;
+        }
+        .audio-waves span:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+        .audio-waves span:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+        .audio-waves span:nth-child(4) {
+            animation-delay: 0.45s;
+        }
+        .audio-waves span:nth-child(5) {
+            animation-delay: 0.6s;
+        }
+        @keyframes wave {
+            0% {
+                height: 4px;
+            }
+            100% {
+                height: 18px;
+            }
+        }
+        .muted .audio-waves span {
+            animation: none;
+            height: 3px;
+            background: #2a2a36;
+        }
+
+        /* ── Typewriter ── */
+        .typewriter-container {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid rgba(255, 255, 255, 0.6);
+            animation: typing 2.8s steps(40, end) forwards, blink .7s step-end infinite;
+        }
+
+        /* ── Code Block ── */
+        pre[class*="language-"] {
+            background: #08080c !important;
+            border: 1px solid #1a1a22 !important;
+            border-radius: 1.5rem !important;
+            font-size: 13px !important;
+        }
+        .token.comment,
+        .token.block-comment,
+        .token.prolog,
+        .token.doctype,
+        .token.cdata {
+            color: #5a5a6e !important;
+        }
+        .token.punctuation {
+            color: #8a8a9e !important;
+        }
+        .token.property,
+        .token.tag,
+        .token.boolean,
+        .token.number,
+        .token.function-name,
+        .token.constant,
+        .token.symbol,
+        .token.deleted {
+            color: #6c8cff !important;
+        }
+        .token.selector,
+        .token.attr-name,
+        .token.string,
+        .token.char,
+        .token.builtin,
+        .token.inserted {
+            color: #34d399 !important;
+        }
+        .token.function {
+            color: #a78bfa !important;
+        }
+        .token.keyword {
+            color: #f472b6 !important;
+        }
+
+        /* ── Responsive Tweaks ── */
+        @media (max-width: 640px) {
+            .typewriter-container {
+                white-space: normal;
+                border-right: none;
+                animation: none;
+                display: block;
+                width: 100% !important;
+            }
+            #cursor-dot,
+            #cursor-ring {
+                display: none;
+            }
+            body {
+                cursor: auto;
+            }
+        }
+
+        /* ── Smooth section transitions ── */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        /* ── Skill bar animation ── */
+        .skill-bar-fill {
+            transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ── Nav link underline ── */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: linear-gradient(90deg, #6c8cff, #a78bfa);
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
 </head>
-<body class="relative antialiased selection:bg-white selection:text-black">
+<body>
 
-  <!-- Audio Elements -->
-  <!-- Ambient dark synth drone (royalty free placeholder URL) -->
-  <audio id="bg-music" loop src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=dark-ambient-110052.mp3"></audio>
-  <!-- UI Sound Effects (short blips) -->
-  <audio id="sfx-hover" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=pop-39222.mp3"></audio>
-  <audio id="sfx-click" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_731e84cebe.mp3?filename=ui-click-43196.mp3"></audio>
-
-  <!-- Custom Cursor -->
-  <div id="cursor-dot" class="hidden md:block"></div>
-  <div id="cursor-ring" class="hidden md:block"></div>
-
-  <!-- Background Layer -->
-  <div class="fixed inset-0 z-[-1] bg-app-bg">
-    <div class="absolute inset-0 bg-cyber-grid opacity-60"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-white opacity-[0.015] blur-[120px] rounded-full pointer-events-none"></div>
-  </div>
-
-  <!-- Audio Controller -->
-  <button id="audio-toggle" class="fixed bottom-6 left-6 z-50 glass-panel p-3 rounded-full flex items-center gap-3 muted hover-glow interactive" aria-label="Toggle Audio">
-    <div class="audio-waves flex items-end gap-[3px] h-4">
-      <span></span><span></span><span></span>
-    </div>
-    <span class="text-[10px] font-mono uppercase tracking-widest text-app-muted mr-1" id="audio-label">Sound Off</span>
-  </button>
-
-  <!-- Top Availability Banner -->
-  <aside class="relative z-50 bg-app-panel border-b border-app-border py-2.5 px-6 flex justify-center">
-    <div class="flex items-center gap-3 text-[11px] font-mono text-app-muted tracking-wider">
-      <div class="flex items-center gap-2">
-        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-        <span class="text-white">Seeking Junior Programmer Roles</span>
-      </div>
-      <span class="hidden sm:inline border-l border-app-border h-3"></span>
-      <span class="hidden sm:inline text-white">BSc Hons First Class Graduate</span>
-    </div>
-  </aside>
-
-  <!-- Main Navigation -->
-  <nav class="sticky top-0 z-40 glass-panel border-b-0 border-app-border transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#home" class="text-sm font-medium font-mono tracking-widest text-white flex items-center gap-3 interactive">
-        <i data-lucide="hexagon" class="w-5 h-5 text-white"></i>
-        <span>L.BENNETT</span>
-      </a>
-      
-      <div class="hidden md:flex items-center space-x-8 text-[11px] font-mono uppercase tracking-[0.2em] text-app-muted">
-        <a href="#showcase" class="hover:text-white transition-colors interactive">Showcase</a>
-        <a href="#architecture" class="hover:text-white transition-colors interactive">Code</a>
-        <a href="#portfolio" class="hover:text-white transition-colors interactive">Portfolio</a>
-        <a href="#stack" class="hover:text-white transition-colors interactive">Stack</a>
-      </div>
-
-      <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="px-4 py-2 text-[10px] font-mono font-bold bg-white text-black hover:bg-gray-200 rounded transition duration-300 flex items-center gap-2 interactive">
-        <i data-lucide="hard-drive" class="w-3 h-3"></i> ACCESS VAULT
-      </a>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header id="home" class="pt-32 pb-24 px-6 max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center">
-    <div class="animate-float">
-      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-panel text-[11px] font-mono text-app-muted mb-8 tracking-widest border-white/10">
-        <i data-lucide="cpu" class="w-3.5 h-3.5 text-white"></i>
-        <span>Games Developer & Systems Engineer</span>
-      </div>
-    </div>
-    
-    <h1 class="text-5xl sm:text-7xl md:text-8xl font-semibold tracking-tighter text-white leading-[1.05] mb-6 max-w-5xl" data-aos="fade-up" data-aos-duration="1000">
-      Building robust <span class="text-gradient-silver italic pr-2">mechanics</span> <br/>
-      for virtual worlds.
-    </h1>
-
-    <p class="text-sm sm:text-base text-app-muted leading-relaxed max-w-2xl font-light mb-10" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-      Specialized in Unreal Engine (C++), Unity, and network architecture. Focused on delivering optimized gameplay logic, custom rendering pipelines, and scalable cloud-backend integration.
-    </p>
-
-    <!-- Action Buttons -->
-    <div class="flex flex-wrap items-center justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
-      <a href="#showcase" class="px-7 py-3.5 rounded-full bg-white text-black font-medium text-xs font-mono uppercase tracking-widest hover:bg-gray-200 transition duration-300 flex items-center gap-2 interactive">
-        <i data-lucide="play-circle" class="w-4 h-4"></i> View Projects
-      </a>
-      <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="px-7 py-3.5 rounded-full glass-panel text-white font-medium text-xs font-mono uppercase tracking-widest hover-glow transition duration-300 flex items-center gap-2 interactive">
-        <i data-lucide="folder-open" class="w-4 h-4"></i> Drive Repository
-      </a>
-    </div>
-  </header>
-
-  <!-- Quick Stats Grid -->
-  <section class="max-w-6xl mx-auto px-6 pb-24 relative z-10">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" data-aos="fade-up" data-aos-delay="300">
-      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover-glow transition duration-300 interactive cursor-default">
-        <i data-lucide="graduation-cap" class="w-5 h-5 text-app-muted"></i>
-        <div class="text-xl font-medium text-white mt-2">First Class</div>
-        <div class="text-[10px] font-mono text-app-muted uppercase tracking-wider">BSc Honours Degree</div>
-      </div>
-      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover-glow transition duration-300 interactive cursor-default">
-        <i data-lucide="blocks" class="w-5 h-5 text-app-muted"></i>
-        <div class="text-xl font-medium text-white mt-2">UE5 & Unity</div>
-        <div class="text-[10px] font-mono text-app-muted uppercase tracking-wider">Primary Game Engines</div>
-      </div>
-      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover-glow transition duration-300 interactive cursor-default">
-        <i data-lucide="code-2" class="w-5 h-5 text-app-muted"></i>
-        <div class="text-xl font-medium text-white mt-2">C++ & C#</div>
-        <div class="text-[10px] font-mono text-app-muted uppercase tracking-wider">Core Programming</div>
-      </div>
-      <div class="glass-panel p-6 rounded-2xl flex flex-col gap-2 hover-glow transition duration-300 interactive cursor-default">
-        <i data-lucide="server" class="w-5 h-5 text-app-muted"></i>
-        <div class="text-xl font-medium text-white mt-2">PlayFab</div>
-        <div class="text-[10px] font-mono text-app-muted uppercase tracking-wider">Cloud Infrastructure</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Divider -->
-  <div class="w-full h-px bg-gradient-to-r from-transparent via-app-border to-transparent"></div>
-
-  <!-- FLAGSHIP PROJECT 1 (UE5) -->
-  <section id="showcase" class="py-24 px-6 max-w-7xl mx-auto relative z-10">
-    <div class="flex flex-col md:flex-row gap-16 items-center">
-      
-      <!-- Video Side -->
-      <div class="w-full md:w-3/5" data-aos="fade-right">
-        <div class="relative rounded-3xl overflow-hidden glass-panel border border-white/10 p-2 hover-glow transition duration-500 interactive">
-          <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent z-0 pointer-events-none"></div>
-          <div class="relative z-10 rounded-2xl overflow-hidden aspect-video bg-black">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/XAHQY7RkMws?rel=0&modestbranding=1" title="Fictitious Choices Prototype" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
+    <!-- ─── PRELOADER ─── -->
+    <div id="preloader">
+        <div class="loader-ring"></div>
+        <div class="loader-text">Initializing System</div>
+        <div class="loader-progress">
+            <div class="loader-progress-bar" id="loader-bar"></div>
         </div>
-      </div>
-
-      <!-- Content Side -->
-      <div class="w-full md:w-2/5 flex flex-col gap-6" data-aos="fade-left">
-        <div class="text-[10px] font-mono text-app-muted uppercase tracking-[0.2em] flex items-center gap-2">
-          <span class="w-8 h-px bg-app-border"></span> Project 01
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-semibold text-white tracking-tight">Fictitious Choices</h2>
-        <div class="flex flex-wrap gap-2">
-          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-white">Unreal Engine 5</span>
-          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-white">Modern C++</span>
-          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-white">Niagara VFX</span>
-        </div>
-        <p class="text-sm text-app-muted leading-relaxed font-light">
-          A fully realized 3D narrative action prototype demonstrating modular engineering. Features include a decoupled C++ event interface, dynamic multicast delegates to eliminate cross-casting overhead, channel-traced environmental interactions, and secure PlayFab cloud serialization.
-        </p>
-        
-        <ul class="space-y-3 mt-2">
-          <li class="flex items-start gap-3 text-sm text-app-muted font-light">
-            <i data-lucide="check-circle-2" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
-            <span><strong>Data-Driven Architecture:</strong> Extensive implementation of DTs and DAs for zero-recompile gameplay balancing.</span>
-          </li>
-          <li class="flex items-start gap-3 text-sm text-app-muted font-light">
-            <i data-lucide="check-circle-2" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
-            <span><strong>Custom Shading Pipeline:</strong> Hand-authored refraction algorithms and dissolve masks using material graphs.</span>
-          </li>
-        </ul>
-
-        <div class="pt-4 flex items-center gap-4">
-          <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="text-xs font-mono font-medium text-white hover:text-gray-400 transition flex items-center gap-2 border-b border-white/30 pb-1 interactive">
-            Source & 13K Word Report <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FLAGSHIP PROJECT 2 (UE4) -->
-  <section class="py-24 px-6 max-w-7xl mx-auto relative z-10" id="fidelity">
-    <div class="flex flex-col md:flex-row-reverse gap-16 items-center">
-      
-      <!-- Video Side -->
-      <div class="w-full md:w-3/5" data-aos="fade-left">
-        <div class="relative rounded-3xl overflow-hidden glass-panel border border-white/10 p-2 hover-glow transition duration-500 interactive">
-          <div class="relative z-10 rounded-2xl overflow-hidden aspect-video bg-black">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/cJqTlG_QSV8?rel=0&modestbranding=1" title="Fidelity Prototype" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-
-      <!-- Content Side -->
-      <div class="w-full md:w-2/5 flex flex-col gap-6" data-aos="fade-right">
-        <div class="text-[10px] font-mono text-app-muted uppercase tracking-[0.2em] flex items-center gap-2">
-          Project 02 <span class="w-8 h-px bg-app-border"></span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-semibold text-white tracking-tight">Fidelity Engine Logic</h2>
-        <div class="flex flex-wrap gap-2">
-          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-white">Unreal Engine 4</span>
-          <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[10px] font-mono text-white">State Machines</span>
-        </div>
-        <p class="text-sm text-app-muted leading-relaxed font-light">
-          An exploration-focused action prototype constructed to evaluate complex game loop frameworks. Showcases rigid level transition management, conditional branching NPC dialogue systems, and item-based logical progression gates.
-        </p>
-        
-        <ul class="space-y-3 mt-2">
-          <li class="flex items-start gap-3 text-sm text-app-muted font-light">
-            <i data-lucide="check-circle-2" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
-            <span><strong>Dialogue Engineering:</strong> Stateful multi-NPC conversation trees mapped to dynamic camera sequences.</span>
-          </li>
-          <li class="flex items-start gap-3 text-sm text-app-muted font-light">
-            <i data-lucide="check-circle-2" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
-            <span><strong>Documentation:</strong> Backed by comprehensive Game Design Documents and system UML flowcharts.</span>
-          </li>
-        </ul>
-
-        <div class="pt-4 flex items-center gap-4">
-          <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="text-xs font-mono font-medium text-white hover:text-gray-400 transition flex items-center gap-2 border-b border-white/30 pb-1 interactive">
-            Access Game Design Docs <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ARCHITECTURE / CODE INSPECTOR -->
-  <section id="architecture" class="py-24 bg-[#080809] border-y border-app-border relative z-10">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-col items-center text-center gap-4 mb-16" data-aos="fade-up">
-        <h2 class="text-3xl font-semibold text-white tracking-tight">Source Architecture</h2>
-        <p class="text-sm text-app-muted max-w-2xl font-light">
-          Examining the blueprint for the decoupled UI Event Subsystem. Utilizing Unreal's <code class="text-white">UGameInstanceSubsystem</code> to globally route application states without inter-actor dependencies.
-        </p>
-      </div>
-
-      <div class="max-w-4xl mx-auto rounded-2xl glass-panel border border-white/10 overflow-hidden shadow-2xl shadow-black interactive cursor-default" data-aos="fade-up" data-aos-delay="100">
-        <!-- Fake Mac Window Header -->
-        <div class="bg-[#121215] px-4 py-3 border-b border-white/5 flex items-center gap-2">
-          <div class="flex gap-1.5">
-            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-            <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
-            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
-          </div>
-          <div class="mx-auto text-[11px] font-mono text-app-muted opacity-60">UIEventSubsystem.h — C++ Header</div>
-        </div>
-        
-        <div class="p-6 overflow-x-auto text-[13px] font-mono">
-<pre><code class="language-cpp">// Architecture: Decoupled UI Subsystem
-#pragma once
-
-#include "CoreMinimal.h"
-#include "Subsystems/GameInstanceSubsystem.h"
-#include "UIEventSubsystem.generated.h"
-
-UENUM(BlueprintType)
-enum class EUIState : uint8 {
-    MainMenu,
-    Gameplay,
-    Pause,
-    Inventory,
-    Dialog
-};
-
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUIStateRequested, EUIState, NewState);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnUIGoBackRequested);
-
-UCLASS()
-class UUIEventSubsystem : public UGameInstanceSubsystem {
-    GENERATED_BODY()
-
-public:
-    UPROPERTY(BlueprintAssignable)
-    FOnUIStateRequested OnUIStateRequested;
-
-    UFUNCTION(BlueprintCallable, Category = "UI Interface")
-    void TransitionState(EUIState TargetState) {
-        ActiveState = TargetState;
-        OnUIStateRequested.Broadcast(TargetState);
-    }
-
-private:
-    EUIState ActiveState = EUIState::MainMenu;
-};</code></pre>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO GRID -->
-  <section id="portfolio" class="py-24 px-6 max-w-7xl mx-auto relative z-10">
-    <div class="mb-16" data-aos="fade-up">
-      <h2 class="text-3xl font-semibold text-white tracking-tight">Expanded Portfolio</h2>
-      <p class="text-sm text-app-muted mt-2 font-light">Categorized developments across shading, networking, and team operations.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Card 1 -->
-      <div class="glass-panel p-8 rounded-3xl hover-glow transition duration-300 interactive cursor-default flex flex-col justify-between" data-aos="fade-up">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6">
-            <i data-lucide="zap" class="w-5 h-5 text-white"></i>
-          </div>
-          <h3 class="text-lg font-medium text-white mb-3">Real-Time VFX & Shaders</h3>
-          <p class="text-sm text-app-muted leading-relaxed font-light mb-6">
-            Authored complex material graphs featuring world-space UV masking, glass refraction, and emissive pulsing. Built accompanying Niagara systems for ambient atmospherics and combat spell triggers.
-          </p>
-        </div>
-        <div class="text-[10px] font-mono text-app-muted uppercase tracking-widest border-t border-white/5 pt-4">
-          Tech: Unreal Engine / Niagara / HLSL logic
-        </div>
-      </div>
+    <!-- ─── SCROLL PROGRESS ─── -->
+    <div id="scroll-progress"></div>
 
-      <!-- Card 2 -->
-      <div class="glass-panel p-8 rounded-3xl hover-glow transition duration-300 interactive cursor-default flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6">
-            <i data-lucide="globe-2" class="w-5 h-5 text-white"></i>
-          </div>
-          <h3 class="text-lg font-medium text-white mb-3">Socket Programming & Netcode</h3>
-          <p class="text-sm text-app-muted leading-relaxed font-light mb-6">
-            Engineered a client-server layer mapping raw packet serialization, continuous session synchronization, and reconnection handshakes. Designed fault-tolerant caching to prevent packet loss.
-          </p>
-        </div>
-        <div class="text-[10px] font-mono text-app-muted uppercase tracking-widest border-t border-white/5 pt-4">
-          Tech: C++ / C# / Network Sockets
-        </div>
-      </div>
+    <!-- ─── AUDIO ─── -->
+    <audio id="bg-music" loop src="https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=dark-ambient-110052.mp3"></audio>
+    <audio id="sfx-hover" src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_0625c1539c.mp3?filename=pop-39222.mp3"></audio>
+    <audio id="sfx-click" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_731e84cebe.mp3?filename=ui-click-43196.mp3"></audio>
 
-      <!-- Card 3 -->
-      <div class="glass-panel p-8 rounded-3xl hover-glow transition duration-300 interactive cursor-default flex flex-col justify-between" data-aos="fade-up">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6">
-            <i data-lucide="git-branch" class="w-5 h-5 text-white"></i>
-          </div>
-          <h3 class="text-lg font-medium text-white mb-3">Agile Version Control</h3>
-          <p class="text-sm text-app-muted leading-relaxed font-light mb-6">
-            Managed multi-developer prototype deliveries enforcing strict milestone tracking, git branch policies, pull request reviews, and systematic merge conflict resolutions within structured sprints.
-          </p>
-        </div>
-        <div class="text-[10px] font-mono text-app-muted uppercase tracking-widest border-t border-white/5 pt-4">
-          Tech: Git / GitHub / Agile Scrum
-        </div>
-      </div>
+    <!-- ─── CURSOR ─── -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
 
-      <!-- Card 4 -->
-      <div class="glass-panel p-8 rounded-3xl hover-glow transition duration-300 interactive cursor-default flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mb-6">
-            <i data-lucide="database" class="w-5 h-5 text-white"></i>
-          </div>
-          <h3 class="text-lg font-medium text-white mb-3">Data-Oriented Architectures</h3>
-          <p class="text-sm text-app-muted leading-relaxed font-light mb-6">
-            Converted rigid gameplay code into modular, designer-friendly Data Tables and Data Assets. This framework dynamically updates item attributes, quest logs, and dialogue without altering C++ source.
-          </p>
-        </div>
-        <div class="text-[10px] font-mono text-app-muted uppercase tracking-widest border-t border-white/5 pt-4">
-          Tech: UE5 / Structs / GameInstance
-        </div>
-      </div>
+    <!-- ─── BACKGROUND ─── -->
+    <canvas id="bg-canvas"></canvas>
+    <div class="fixed inset-0 z-[-1] pointer-events-none bg-grid"></div>
+    <div class="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
+        <div class="glow-orb w-[600px] h-[600px] top-[5%] left-[-10%] bg-[#6c8cff] opacity-[0.06]"></div>
+        <div class="glow-orb w-[500px] h-[500px] bottom-[10%] right-[-5%] bg-[#a78bfa] opacity-[0.05]"></div>
+        <div class="glow-orb w-[400px] h-[400px] top-[40%] left-[40%] bg-[#34d399] opacity-[0.03]"></div>
+        <div class="absolute w-full h-[1px] bg-white/[0.015] animate-scanline"></div>
     </div>
-  </section>
 
-  <!-- TOOLKIT / SKILLS -->
-  <section id="stack" class="py-24 bg-[#080809] border-y border-app-border relative z-10">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="mb-16 text-center" data-aos="fade-up">
-        <h2 class="text-3xl font-semibold text-white tracking-tight">Technical Stack</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-        <!-- Col 1 -->
-        <div data-aos="fade-up" data-aos-delay="0">
-          <div class="text-[11px] font-mono text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-3 flex items-center gap-2"><i data-lucide="terminal-square" class="w-3.5 h-3.5"></i> Core Engines</div>
-          <ul class="space-y-4">
-            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>Unreal Engine 5</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Advanced</span></li>
-            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>Unreal Engine 4</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Advanced</span></li>
-            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>Unity3D</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Proficient</span></li>
-          </ul>
+    <!-- ─── AUDIO TOGGLE ─── -->
+    <button id="audio-toggle" class="fixed bottom-8 right-8 z-50 glass-panel p-4 rounded-full flex items-center gap-3 muted interactive magnetic border-white/5 hover:border-white/15 transition-all duration-300" aria-label="Toggle Audio">
+        <div class="audio-waves flex items-end gap-[4px] h-4">
+            <span></span><span></span><span></span><span></span><span></span>
         </div>
-        
-        <!-- Col 2 -->
-        <div data-aos="fade-up" data-aos-delay="100">
-          <div class="text-[11px] font-mono text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-3 flex items-center gap-2"><i data-lucide="code" class="w-3.5 h-3.5"></i> Languages</div>
-          <ul class="space-y-4">
-            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>C++</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Advanced</span></li>
-            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>C#</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Proficient</span></li>
-            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>Python / Java</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Working</span></li>
-          </ul>
+        <span class="text-[8px] font-mono tracking-[0.15em] text-app-muted hidden sm:inline">SOUND</span>
+    </button>
+
+    <!-- ─── AVAILABILITY BANNER ─── -->
+    <aside class="relative z-40 bg-black/60 backdrop-blur-xl border-b border-white/5 py-2.5 px-6 flex justify-center">
+        <div class="flex flex-wrap items-center justify-center gap-4 text-[9px] font-mono text-app-muted tracking-[0.2em] uppercase">
+            <div class="flex items-center gap-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#34d399] animate-pulse"></span>
+                <span class="text-white font-medium">Seeking Junior Programmer Roles</span>
+            </div>
+            <span class="hidden sm:inline-block w-px h-4 bg-white/10"></span>
+            <span class="hidden sm:inline text-white/70">First Class Honours (BSc)</span>
+            <span class="hidden md:inline-block w-px h-4 bg-white/10"></span>
+            <span class="hidden md:inline text-white/70">Open to Relocation</span>
+        </div>
+    </aside>
+
+    <!-- ─── NAVIGATION ─── -->
+    <nav class="sticky top-0 z-40 glass-panel border-b-0 transition-all duration-500" id="main-nav">
+        <div class="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between">
+            <a href="#home" class="text-sm font-medium font-mono tracking-widest text-white flex items-center gap-3 interactive magnetic">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#6c8cff] to-[#a78bfa] text-black flex items-center justify-center transition-transform duration-500 hover:rotate-180 shadow-lg shadow-[#6c8cff]/20">
+                    <i data-lucide="terminal" class="w-4 h-4"></i>
+                </div>
+                <span class="tracking-[0.15em] text-sm font-light">L.BENNETT</span>
+            </a>
+
+            <div class="hidden lg:flex items-center space-x-10 text-[9px] font-mono uppercase tracking-[0.25em] text-app-muted">
+                <a href="#showcase" class="nav-link hover:text-white transition-colors interactive magnetic">UE5 Dev</a>
+                <a href="#vfx" class="nav-link hover:text-white transition-colors interactive magnetic">Shaders</a>
+                <a href="#fidelity" class="nav-link hover:text-white transition-colors interactive magnetic">UE4 Arch</a>
+                <a href="#networking" class="nav-link hover:text-white transition-colors interactive magnetic">Netcode</a>
+                <a href="#stack" class="nav-link hover:text-white transition-colors interactive magnetic">Stack</a>
+            </div>
+
+            <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="px-6 py-2.5 text-[9px] font-mono font-bold bg-white text-black hover:bg-[#6c8cff] hover:text-white rounded-full transition-all duration-300 flex items-center gap-2 interactive magnetic shadow-lg shadow-white/5 hover:shadow-[#6c8cff]/25">
+                <i data-lucide="hard-drive" class="w-3.5 h-3.5"></i> SYSTEM VAULT
+            </a>
+        </div>
+    </nav>
+
+    <!-- ─── HERO ─── -->
+    <header id="home" class="pt-28 pb-20 px-6 max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center min-h-[80vh] justify-center">
+        <div class="animate-float" data-aos="fade-down" data-aos-duration="800">
+            <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full glass-panel text-[9px] font-mono text-app-muted mb-8 tracking-[0.2em] border-white/5 interactive">
+                <i data-lucide="cpu" class="w-3.5 h-3.5 text-[#6c8cff]"></i>
+                <span>Games Developer / Systems Engineer</span>
+            </div>
         </div>
 
-        <!-- Col 3 -->
-        <div data-aos="fade-up" data-aos-delay="200">
-          <div class="text-[11px] font-mono text-white mb-6 uppercase tracking-widest border-b border-white/10 pb-3 flex items-center gap-2"><i data-lucide="wrench" class="w-3.5 h-3.5"></i> Software & Tools</div>
-          <ul class="space-y-4">
-            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>JetBrains Rider & VS</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Daily</span></li>
-            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>Git / GitHub</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Advanced</span></li>
-            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>PlayFab SDK</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Proficient</span></li>
-            <li class="flex justify-between items-center text-sm font-light text-app-muted"><span>Blender 3D</span> <span class="text-white text-[10px] font-mono border border-white/20 px-2 py-0.5 rounded">Working</span></li>
-          </ul>
+        <h1 class="text-5xl sm:text-7xl md:text-[6.5rem] font-bold tracking-tighter text-white leading-[1.05] mb-6 max-w-5xl" data-aos="fade-up" data-aos-duration="1000">
+            Engineering robust <br class="hidden md:block" />
+            <span class="text-gradient-primary italic pr-2">mechanics</span> for virtual worlds.
+        </h1>
+
+        <div class="h-[56px] flex items-center justify-center mb-8" data-aos="fade-up" data-aos-delay="100">
+            <div class="typewriter-container text-sm sm:text-base text-app-muted font-mono tracking-wide max-w-full px-4">
+                > Specializing in C++, Unreal Engine 5, and Netcode Architecture_
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- VAULT / CTA -->
-  <section id="vault" class="py-32 px-6 max-w-7xl mx-auto relative z-10 text-center">
-    <div class="glass-panel p-12 md:p-20 rounded-[3rem] border border-white/10 hover-glow transition duration-700 relative overflow-hidden" data-aos="zoom-in">
-      <div class="absolute inset-0 bg-gradient-to-t from-white/5 to-transparent z-0 pointer-events-none"></div>
-      
-      <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center">
-        <div class="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center mb-8 border border-white/20">
-          <i data-lucide="lock" class="w-6 h-6 text-white"></i>
+        <div class="flex flex-wrap items-center justify-center gap-5 mt-4" data-aos="fade-up" data-aos-delay="200">
+            <a href="#showcase" class="px-8 py-4 rounded-full bg-gradient-to-r from-[#6c8cff] to-[#a78bfa] text-white font-semibold text-xs font-mono uppercase tracking-widest hover:scale-105 transition-all duration-300 flex items-center gap-2 interactive magnetic shadow-[0_0_30px_rgba(108,140,255,0.2)] hover:shadow-[0_0_50px_rgba(108,140,255,0.4)]">
+                <i data-lucide="play-circle" class="w-4 h-4"></i> Initialize Showcase
+            </a>
+            <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="px-8 py-4 rounded-full glass-panel border-white/10 text-white font-semibold text-xs font-mono uppercase tracking-widest hover:bg-white/5 transition-all duration-300 flex items-center gap-2 interactive magnetic">
+                <i data-lucide="folder-open" class="w-4 h-4"></i> Access Drive
+            </a>
         </div>
-        <h2 class="text-3xl sm:text-5xl font-semibold text-white tracking-tight mb-6">Access the Full Drive Vault.</h2>
-        <p class="text-app-muted text-sm sm:text-base font-light mb-10">
-          Direct access to the Google Drive cloud repository. Contains all raw project files, executable builds, exhaustive Game Design Documents, comprehensive technical reports, academic records, and CV variants.
-        </p>
-        <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="px-8 py-4 rounded-full bg-white text-black font-semibold text-xs font-mono uppercase tracking-widest hover:scale-105 transition duration-300 flex items-center gap-3 interactive shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:shadow-[0_0_50px_rgba(255,255,255,0.5)]">
-          <i data-lucide="external-link" class="w-4 h-4"></i> Open Shared Directory
-        </a>
-      </div>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="py-12 px-6 border-t border-app-border bg-black relative z-10">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="flex items-center gap-3 opacity-70 hover:opacity-100 transition interactive cursor-default">
-        <i data-lucide="hexagon" class="w-4 h-4 text-white"></i>
-        <div class="text-xs font-mono text-white tracking-widest uppercase">Leilani Bennett</div>
-      </div>
-      <div class="flex items-center gap-8 text-[10px] font-mono uppercase tracking-widest text-app-muted">
-        <a href="#home" class="hover:text-white transition interactive">Scroll Top</a>
-        <a href="https://github.com" target="_blank" class="hover:text-white transition interactive">GitHub</a>
-        <a href="mailto:rosezelda51@gmail.com" class="hover:text-white transition interactive">Email</a>
-      </div>
-    </div>
-  </footer>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30 animate-bounce">
+            <span class="text-[8px] font-mono tracking-[0.3em] text-app-muted uppercase">Scroll</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-white/50"></i>
+        </div>
+    </header>
 
-  <!-- Scripts Setup -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
-  
-  <script>
-    // Initialize AOS
-    AOS.init({ once: true, duration: 800, easing: 'ease-out-expo' });
-    lucide.createIcons();
+    <!-- ─── STATS ─── -->
+    <section class="max-w-6xl mx-auto px-6 pb-24 relative z-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-5" data-aos="fade-up" data-aos-delay="300">
+            <div class="glass-panel p-8 rounded-2xl flex flex-col gap-2 tilt-card interactive group border-white/5 hover:border-[#6c8cff]/20 transition-colors">
+                <div class="tilt-content flex flex-col h-full justify-between">
+                    <i data-lucide="graduation-cap" class="w-6 h-6 text-[#6c8cff] mb-5 transition-transform duration-300 group-hover:scale-110"></i>
+                    <div class="text-2xl font-bold text-white tracking-tight">First Class</div>
+                    <div class="text-[9px] font-mono text-app-muted uppercase tracking-widest mt-2">BSc Honours Degree</div>
+                </div>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl flex flex-col gap-2 tilt-card interactive group border-white/5 hover:border-[#a78bfa]/20 transition-colors">
+                <div class="tilt-content flex flex-col h-full justify-between">
+                    <i data-lucide="blocks" class="w-6 h-6 text-[#a78bfa] mb-5 transition-transform duration-300 group-hover:scale-110"></i>
+                    <div class="text-2xl font-bold text-white tracking-tight">UE5 & Unity</div>
+                    <div class="text-[9px] font-mono text-app-muted uppercase tracking-widest mt-2">Primary Engines</div>
+                </div>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl flex flex-col gap-2 tilt-card interactive group border-white/5 hover:border-[#34d399]/20 transition-colors">
+                <div class="tilt-content flex flex-col h-full justify-between">
+                    <i data-lucide="code-2" class="w-6 h-6 text-[#34d399] mb-5 transition-transform duration-300 group-hover:scale-110"></i>
+                    <div class="text-2xl font-bold text-white tracking-tight">C++ & C#</div>
+                    <div class="text-[9px] font-mono text-app-muted uppercase tracking-widest mt-2">Core Programming</div>
+                </div>
+            </div>
+            <div class="glass-panel p-8 rounded-2xl flex flex-col gap-2 tilt-card interactive group border-white/5 hover:border-[#f472b6]/20 transition-colors">
+                <div class="tilt-content flex flex-col h-full justify-between">
+                    <i data-lucide="server" class="w-6 h-6 text-[#f472b6] mb-5 transition-transform duration-300 group-hover:scale-110"></i>
+                    <div class="text-2xl font-bold text-white tracking-tight">PlayFab</div>
+                    <div class="text-[9px] font-mono text-app-muted uppercase tracking-widest mt-2">Cloud Backend</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // --- Audio System Setup ---
-    const audioToggleBtn = document.getElementById('audio-toggle');
-    const audioLabel = document.getElementById('audio-label');
-    const bgm = document.getElementById('bg-music');
-    const sfxHover = document.getElementById('sfx-hover');
-    const sfxClick = document.getElementById('sfx-click');
-    
-    let isMuted = true;
-    bgm.volume = 0.15; // Keep BGM subtle
-    sfxHover.volume = 0.1;
-    sfxClick.volume = 0.3;
+    <div class="section-divider"></div>
 
-    // Toggle Global Audio
-    audioToggleBtn.addEventListener('click', () => {
-      isMuted = !isMuted;
-      if(isMuted) {
-        bgm.pause();
-        audioToggleBtn.classList.add('muted');
-        audioLabel.innerText = "Sound Off";
-      } else {
-        bgm.play().catch(e => console.log("Audio play blocked by browser:", e));
-        audioToggleBtn.classList.remove('muted');
-        audioLabel.innerText = "Sound On";
-      }
-    });
+    <!-- ─── PROJECT 01: FICTITIOUS CHOICES ─── -->
+    <section id="showcase" class="py-28 px-6 max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col gap-4 mb-14" data-aos="fade-up">
+            <div class="text-[9px] font-mono text-app-muted uppercase tracking-[0.25em] flex items-center gap-3">
+                <span class="w-12 h-px bg-white/10"></span> Project 01 <span class="w-12 h-px bg-white/10"></span>
+            </div>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">Fictitious Choices</h2>
+            <p class="text-app-muted max-w-3xl text-sm sm:text-base font-light leading-relaxed mt-2">
+                A cinematic third-person narrative action prototype built to test modular C++ subsystem architecture, custom Niagara particle systems, channel-traced interactions, and PlayFab cloud authentication.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/8 text-[9px] font-mono text-white/80 tracking-wider">UE5</span>
+                <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/8 text-[9px] font-mono text-white/80 tracking-wider">C++ Subsystems</span>
+                <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/8 text-[9px] font-mono text-white/80 tracking-wider">Data-Driven Logic</span>
+                <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/8 text-[9px] font-mono text-white/80 tracking-wider">PlayFab Auth</span>
+            </div>
+        </div>
 
-    // SFX Attachments
-    const interactiveElements = document.querySelectorAll('.interactive');
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        if(!isMuted) {
-          sfxHover.currentTime = 0;
-          sfxHover.play().catch(()=>{});
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-7 mb-8" data-aos="fade-up" data-aos-delay="100">
+            <div class="lg:col-span-2 relative rounded-2xl overflow-hidden glass-panel border border-white/5 p-2 tilt-card interactive group">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#6c8cff]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0"></div>
+                <div class="relative z-10 rounded-xl overflow-hidden aspect-video bg-black tilt-content shadow-2xl">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/XAHQY7RkMws?rel=0&modestbranding=1&autoplay=0" title="Fictitious Choices Prototype" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="glass-panel rounded-2xl p-8 border border-white/5 flex flex-col justify-center gap-5 tilt-card interactive group">
+                <div class="tilt-content">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#6c8cff]/20 to-[#a78bfa]/20 border border-white/8 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="cpu" class="w-5 h-5 text-[#6c8cff]"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">C++ Architecture</h3>
+                    <p class="text-sm text-app-muted font-light leading-relaxed">
+                        Designed a custom UI event subsystem with dynamic multicast delegates (<code class="text-white font-mono text-[10px] bg-white/8 px-1.5 py-0.5 rounded">FOnUIStateRequested</code>), eliminating hard widget casting and maintaining a pure state-driven HUD flow. Decoupled narrative trees into Data Tables for zero-recompile balance adjustments.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-7 mb-12">
+            <div class="glass-panel p-2 rounded-2xl border border-white/5 tilt-card interactive flex flex-col" data-aos="fade-up" data-aos-delay="150">
+                <div class="relative z-10 rounded-xl overflow-hidden aspect-video bg-black mb-4 tilt-content">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/gcMKPucU0iU?rel=0&modestbranding=1" title="IPD Demonstration" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="px-5 pb-4 tilt-content">
+                    <div class="text-base font-medium text-white mb-0.5">IPD Demonstration</div>
+                    <div class="text-[9px] font-mono text-app-muted uppercase tracking-widest">Initial Project Delivery & Concept</div>
+                </div>
+            </div>
+            <div class="glass-panel p-2 rounded-2xl border border-white/5 tilt-card interactive flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                <div class="relative z-10 rounded-xl overflow-hidden aspect-video bg-black mb-4 tilt-content">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/nkdzSTACppE?rel=0&modestbranding=1" title="Development Prototype" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="px-5 pb-4 tilt-content">
+                    <div class="text-base font-medium text-white mb-0.5">Development Prototype</div>
+                    <div class="text-[9px] font-mono text-app-muted uppercase tracking-widest">Mechanics & Interaction Iteration</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center" data-aos="fade-up">
+            <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="px-8 py-4 rounded-full border border-white/10 text-[10px] font-mono font-medium text-white hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-3 interactive magnetic">
+                ACCESS SOURCE, IPD DOCS & REPORT (13K WORDS) <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ─── PROJECT 02: SHADERS & VFX ─── -->
+    <section id="vfx" class="py-28 px-6 max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col gap-4 mb-14" data-aos="fade-up">
+            <div class="text-[9px] font-mono text-app-muted uppercase tracking-[0.25em] flex items-center gap-3">
+                <span class="w-12 h-px bg-white/10"></span> Project 02 <span class="w-12 h-px bg-white/10"></span>
+            </div>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">UE5 Shaders & VFX</h2>
+            <p class="text-app-muted max-w-3xl text-sm sm:text-base font-light leading-relaxed mt-2">
+                Comprehensive exploration of Unreal Engine 5's rendering pipeline. Implemented custom material graphs for complex environmental behaviors (glass refraction, emissive dissolve masks) and authored layered Niagara particle systems for ambient and interactive visual effects.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/8 text-[9px] font-mono text-white/80 tracking-wider">Niagara VFX</span>
+                <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/8 text-[9px] font-mono text-white/80 tracking-wider">Material Graph</span>
+                <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/8 text-[9px] font-mono text-white/80 tracking-wider">HLSL Logic</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-7 mb-12">
+            <div class="glass-panel p-2 rounded-2xl border border-white/5 tilt-card interactive flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative z-10 rounded-xl overflow-hidden aspect-video bg-black mb-4 tilt-content">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/ApAwzBq9MUc?rel=0&modestbranding=1" title="Shaders Coursework 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="px-5 pb-4 tilt-content">
+                    <div class="text-base font-medium text-white mb-0.5">Coursework 1</div>
+                    <div class="text-[9px] font-mono text-app-muted uppercase tracking-widest">Material Logic & Procedural Texturing</div>
+                </div>
+            </div>
+            <div class="glass-panel p-2 rounded-2xl border border-white/5 tilt-card interactive flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                <div class="relative z-10 rounded-xl overflow-hidden aspect-video bg-black mb-4 tilt-content">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/4EvSbPHUMRk?rel=0&modestbranding=1" title="Shaders Coursework 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="px-5 pb-4 tilt-content">
+                    <div class="text-base font-medium text-white mb-0.5">Coursework 2</div>
+                    <div class="text-[9px] font-mono text-app-muted uppercase tracking-widest">Niagara Systems & Post-Processing</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center" data-aos="fade-up">
+            <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="px-8 py-4 rounded-full border border-white/10 text-[10px] font-mono font-medium text-white hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-3 interactive magnetic">
+                VIEW VFX PROJECT FILES IN DRIVE <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ─── PROJECT 03: FIDELITY ─── -->
+    <section id="fidelity" class="py-28 px-6 max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col gap-4 mb-14" data-aos="fade-up">
+            <div class="text-[9px] font-mono text-app-muted uppercase tracking-[0.25em] flex items-center gap-3">
+                <span class="w-12 h-px bg-white/10"></span> Project 03 <span class="w-12 h-px bg-white/10"></span>
+            </div>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">Fidelity (UE4)</h2>
+            <p class="text-app-muted max-w-3xl text-sm sm:text-base font-light leading-relaxed mt-2">
+                Developed for the Game Engine Architecture module. Built in Unreal Engine 4 featuring third-person exploration, structured NPC interaction systems, fragment collection progression, and custom Game Design Documentation.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/8 text-[9px] font-mono text-white/80 tracking-wider">UE4</span>
+                <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/8 text-[9px] font-mono text-white/80 tracking-wider">State Machines</span>
+                <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/8 text-[9px] font-mono text-white/80 tracking-wider">Level Design</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-7 mb-12" data-aos="fade-up" data-aos-delay="100">
+            <div class="glass-panel rounded-2xl p-8 border border-white/5 flex flex-col justify-center gap-5 tilt-card interactive group">
+                <div class="tilt-content">
+                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#34d399]/20 to-[#6c8cff]/20 border border-white/8 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="message-square" class="w-5 h-5 text-[#34d399]"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Branching Logic</h3>
+                    <p class="text-sm text-app-muted font-light leading-relaxed">
+                        Engineered multi-character dialogue interactions with dynamic camera framing. Authored full Game Design Documents (GDD) and system mechanic breakdowns mapping complex state transitions.
+                    </p>
+                </div>
+            </div>
+            <div class="lg:col-span-2 relative rounded-2xl overflow-hidden glass-panel border border-white/5 p-2 tilt-card interactive group">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#34d399]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0"></div>
+                <div class="relative z-10 rounded-xl overflow-hidden aspect-video bg-black tilt-content shadow-2xl">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/cJqTlG_QSV8?rel=0&modestbranding=1" title="Fidelity Prototype" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center" data-aos="fade-up">
+            <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="px-8 py-4 rounded-full border border-white/10 text-[10px] font-mono font-medium text-white hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-3 interactive magnetic">
+                DOWNLOAD FIDELITY FILES & GDD <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ─── PROJECT 04: NETWORKING ─── -->
+    <section id="networking" class="py-28 px-6 max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col gap-4 mb-14" data-aos="fade-up">
+            <div class="text-[9px] font-mono text-app-muted uppercase tracking-[0.25em] flex items-center gap-3">
+                <span class="w-12 h-px bg-white/10"></span> Project 04 <span class="w-12 h-px bg-white/10"></span>
+            </div>
+            <h2 class="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight">Unity Networking & PlayFab</h2>
+            <p class="text-app-muted max-w-3xl text-sm sm:text-base font-light leading-relaxed mt-2">
+                Multiplayer and backend security coursework demonstrating robust client-server architectures in Unity using C#. Implements Microsoft PlayFab for secure user authentication, cloud data persistence, encrypted transactions, and live-ops session management.
+            </p>
+            <div class="flex flex-wrap gap-2 mt-4">
+                <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/8 text-[9px] font-mono text-white/80 tracking-wider">Unity3D</span>
+                <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/8 text-[9px] font-mono text-white/80 tracking-wider">C# / Netcode</span>
+                <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/8 text-[9px] font-mono text-white/80 tracking-wider">PlayFab Backend</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-7 mb-12">
+            <div class="glass-panel p-2 rounded-2xl border border-white/5 tilt-card interactive flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                <div class="relative z-10 rounded-xl overflow-hidden aspect-video bg-black mb-4 tilt-content">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/6W3DycX8y-M?rel=0&modestbranding=1" title="Networking Coursework 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="px-5 pb-4 tilt-content">
+                    <div class="text-base font-medium text-white mb-0.5">Coursework Part 1</div>
+                    <div class="text-[9px] font-mono text-app-muted uppercase tracking-widest">Authentication & Core Logic</div>
+                </div>
+            </div>
+            <div class="glass-panel p-2 rounded-2xl border border-white/5 tilt-card interactive flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                <div class="relative z-10 rounded-xl overflow-hidden aspect-video bg-black mb-4 tilt-content">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/Z7CqvU6bPx0?rel=0&modestbranding=1" title="Networking Coursework 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                </div>
+                <div class="px-5 pb-4 tilt-content">
+                    <div class="text-base font-medium text-white mb-0.5">Coursework Part 2</div>
+                    <div class="text-[9px] font-mono text-app-muted uppercase tracking-widest">Virtual Economy & Live-Ops</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center" data-aos="fade-up">
+            <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="px-8 py-4 rounded-full border border-white/10 text-[10px] font-mono font-medium text-white hover:bg-white hover:text-black transition-all duration-300 flex items-center gap-3 interactive magnetic">
+                VIEW SOURCE & BUILDS IN DRIVE <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ─── CODE ARCHITECTURE ─── -->
+    <section id="architecture" class="py-28 px-6 max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col items-center text-center gap-4 mb-14" data-aos="fade-up">
+            <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#6c8cff]/20 to-[#a78bfa]/20 flex items-center justify-center border border-white/8">
+                <i data-lucide="code-2" class="w-6 h-6 text-[#6c8cff]"></i>
+            </div>
+            <h2 class="text-4xl sm:text-6xl font-bold text-white tracking-tight">Source Architecture</h2>
+            <p class="text-base text-app-muted max-w-2xl font-light mt-2">
+                Examining the blueprint for the decoupled UI Event Subsystem. Utilizing Unreal's <code class="text-white bg-white/8 px-1.5 py-0.5 rounded font-mono text-xs">UGameInstanceSubsystem</code> to globally route application states without inter-actor dependencies.
+            </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto rounded-2xl glass-panel border border-white/5 overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.6)] interactive cursor-default tilt-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="bg-[#08080c] px-6 py-3.5 border-b border-white/5 flex items-center gap-3 tilt-content">
+                <div class="flex gap-2">
+                    <div class="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                    <div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                    <div class="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                </div>
+                <div class="mx-auto text-[10px] font-mono text-app-muted opacity-60 tracking-widest">UIEventSubsystem.h — C++</div>
+            </div>
+            <div class="p-6 overflow-x-auto text-[13px] font-mono bg-transparent tilt-content">
+                <pre><code class="language-cpp">// Architecture: Decoupled UI Subsystem
+                    #pragma once
+
+                    #include "CoreMinimal.h"
+                    #include "Subsystems/GameInstanceSubsystem.h"
+                    #include "UIEventSubsystem.generated.h"
+
+                    UENUM(BlueprintType)
+                    enum class EUIState : uint8 {
+                        MainMenu,
+                        Gameplay,
+                        Pause,
+                        Inventory,
+                        Dialog
+                    };
+
+                    DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnUIStateRequested, EUIState, NewState);
+                    DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnUIGoBackRequested);
+
+                    UCLASS()
+                    class UUIEventSubsystem : public UGameInstanceSubsystem {
+                        GENERATED_BODY()
+
+                    public:
+                        UPROPERTY(BlueprintAssignable)
+                        FOnUIStateRequested OnUIStateRequested;
+
+                        UFUNCTION(BlueprintCallable, Category = "UI Interface")
+                        void TransitionState(EUIState TargetState) {
+                            ActiveState = TargetState;
+                            OnUIStateRequested.Broadcast(TargetState);
+                        }
+
+                    private:
+                        EUIState ActiveState = EUIState::MainMenu;
+                    };</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ─── TECHNICAL STACK ─── -->
+    <section id="stack" class="py-28 px-6 max-w-7xl mx-auto relative z-10">
+        <div class="mb-16 text-center" data-aos="fade-up">
+            <h2 class="text-4xl sm:text-6xl font-bold text-white tracking-tight">Technical Stack</h2>
+            <p class="text-app-muted text-sm font-light mt-3">Core competencies & daily drivers</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-panel p-10 rounded-2xl tilt-card interactive group border-white/5 hover:border-[#6c8cff]/20 transition-colors" data-aos="fade-up" data-aos-delay="0">
+                <div class="tilt-content">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#6c8cff]/20 to-[#6c8cff]/5 flex items-center justify-center border border-white/8 mb-7 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="terminal-square" class="w-6 h-6 text-[#6c8cff]"></i>
+                    </div>
+                    <div class="text-[9px] font-mono text-app-muted mb-6 uppercase tracking-[0.2em] border-b border-white/5 pb-4">Core Engines</div>
+                    <ul class="space-y-5">
+                        <li class="flex justify-between items-center text-sm font-light text-white"><span>Unreal Engine 5</span> <span class="text-app-muted text-[9px] font-mono border border-white/8 px-3 py-1 rounded-full">Advanced</span></li>
+                        <li class="flex justify-between items-center text-sm font-light text-white"><span>Unreal Engine 4</span> <span class="text-app-muted text-[9px] font-mono border border-white/8 px-3 py-1 rounded-full">Advanced</span></li>
+                        <li class="flex justify-between items-center text-sm font-light text-white"><span>Unity3D</span> <span class="text-app-muted text-[9px] font-mono border border-white/8 px-3 py-1 rounded-full">Proficient</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-panel p-10 rounded-2xl tilt-card interactive group border-white/5 hover:border-[#a78bfa]/20 transition-colors" data-aos="fade-up" data-aos-delay="100">
+                <div class="tilt-content">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#a78bfa]/20 to-[#a78bfa]/5 flex items-center justify-center border border-white/8 mb-7 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="code" class="w-6 h-6 text-[#a78bfa]"></i>
+                    </div>
+                    <div class="text-[9px] font-mono text-app-muted mb-6 uppercase tracking-[0.2em] border-b border-white/5 pb-4">Languages</div>
+                    <ul class="space-y-5">
+                        <li class="flex justify-between items-center text-sm font-light text-white"><span>C++</span> <span class="text-app-muted text-[9px] font-mono border border-white/8 px-3 py-1 rounded-full">Advanced</span></li>
+                        <li class="flex justify-between items-center text-sm font-light text-white"><span>C#</span> <span class="text-app-muted text-[9px] font-mono border border-white/8 px-3 py-1 rounded-full">Proficient</span></li>
+                        <li class="flex justify-between items-center text-sm font-light text-white"><span>Python / Java</span> <span class="text-app-muted text-[9px] font-mono border border-white/8 px-3 py-1 rounded-full">Working</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-panel p-10 rounded-2xl tilt-card interactive group border-white/5 hover:border-[#34d399]/20 transition-colors" data-aos="fade-up" data-aos-delay="200">
+                <div class="tilt-content">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-[#34d399]/20 to-[#34d399]/5 flex items-center justify-center border border-white/8 mb-7 group-hover:scale-110 transition-transform duration-500">
+                        <i data-lucide="wrench" class="w-6 h-6 text-[#34d399]"></i>
+                    </div>
+                    <div class="text-[9px] font-mono text-app-muted mb-6 uppercase tracking-[0.2em] border-b border-white/5 pb-4">Software & Tools</div>
+                    <ul class="space-y-5">
+                        <li class="flex justify-between items-center text-sm font-light text-white"><span>Git / GitHub</span> <span class="text-app-muted text-[9px] font-mono border border-white/8 px-3 py-1 rounded-full">Advanced</span></li>
+                        <li class="flex justify-between items-center text-sm font-light text-white"><span>PlayFab SDK</span> <span class="text-app-muted text-[9px] font-mono border border-white/8 px-3 py-1 rounded-full">Proficient</span></li>
+                        <li class="flex justify-between items-center text-sm font-light text-white"><span>Rider / VS</span> <span class="text-app-muted text-[9px] font-mono border border-white/8 px-3 py-1 rounded-full">Daily</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ─── BACKGROUND / TIMELINE ─── -->
+    <section class="py-28 px-6 max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col gap-4 mb-16 text-center" data-aos="fade-up">
+            <h2 class="text-4xl sm:text-6xl font-bold text-white tracking-tight">Background</h2>
+            <p class="text-app-muted text-sm font-light">Education & professional journey</p>
+        </div>
+
+        <div class="space-y-6 max-w-5xl mx-auto">
+            <div class="glass-panel p-8 rounded-2xl tilt-card interactive group border-white/5 hover:border-[#6c8cff]/20 transition-colors" data-aos="fade-up">
+                <div class="tilt-content">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between text-[10px] font-mono text-white/40 uppercase tracking-[0.2em] mb-4">
+                        <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#6c8cff]"></span> University of Westminster, London</span>
+                        <span>2021 – 2026</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">BSc (Hons) in Computer Games Development</h3>
+                    <p class="text-sm text-app-muted font-light leading-relaxed">
+                        Graduated with <span class="text-white font-medium">First Class Honours</span>. Core modules included Final Project (Fictitious Choices), Game Engine Architecture (Fidelity), Shaders & VFX, Programming Methodology, Game Patterns, Game AI, and Networking & Security.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-panel p-8 rounded-2xl tilt-card interactive group border-white/5 hover:border-[#a78bfa]/20 transition-colors" data-aos="fade-up" data-aos-delay="100">
+                <div class="tilt-content">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between text-[10px] font-mono text-white/40 uppercase tracking-[0.2em] mb-4">
+                        <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#a78bfa]"></span> Uxbridge College, London</span>
+                        <span>2019 – 2021</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">AIM Level 3 Extended Diploma: Games, Animation, VFX</h3>
+                    <p class="text-sm text-app-muted font-light leading-relaxed">
+                        Achieved <span class="text-white font-medium">Distinction</span>. Two-year extended diploma covering C++ and C# game development, Unity and Unreal Engine pipelines, 3D asset creation in Blender, and mathematical problem-solving.
+                    </p>
+                </div>
+            </div>
+
+            <div class="glass-panel p-8 rounded-2xl tilt-card interactive group border-white/5 hover:border-[#34d399]/20 transition-colors" data-aos="fade-up" data-aos-delay="200">
+                <div class="tilt-content">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between text-[10px] font-mono text-white/40 uppercase tracking-[0.2em] mb-4">
+                        <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-[#34d399]"></span> Next, CeX, Arvato CRM</span>
+                        <span>2022 – Present</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Professional Operations & Technical Support</h3>
+                    <p class="text-sm text-app-muted font-light leading-relaxed">
+                        Managed enterprise inventory databases, verified device hardware diagnostics, and handled high-priority technical support cases while consistently meeting and surpassing SLA response metrics.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ─── VAULT / CTA ─── -->
+    <section id="vault" class="py-28 px-6 max-w-7xl mx-auto relative z-10 text-center">
+        <div class="glass-panel p-12 md:p-20 rounded-3xl border border-white/5 transition-all duration-700 relative overflow-hidden interactive tilt-card group" data-aos="zoom-in">
+            <div class="absolute inset-0 bg-gradient-to-br from-[#6c8cff]/5 via-[#a78bfa]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+            <div class="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-[#6c8cff] blur-[120px] opacity-0 group-hover:opacity-10 transition-opacity duration-1000 pointer-events-none"></div>
+            <div class="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-[#a78bfa] blur-[120px] opacity-0 group-hover:opacity-10 transition-opacity duration-1000 pointer-events-none"></div>
+
+            <div class="relative z-10 max-w-3xl mx-auto flex flex-col items-center tilt-content">
+                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#6c8cff]/20 to-[#a78bfa]/20 flex items-center justify-center mb-8 border border-white/10 group-hover:scale-110 transition-transform duration-500">
+                    <i data-lucide="lock" class="w-8 h-8 text-[#6c8cff]"></i>
+                </div>
+                <h2 class="text-4xl sm:text-6xl font-bold text-white tracking-tight mb-5">Access the System Vault.</h2>
+                <p class="text-app-muted text-sm sm:text-base font-light mb-10 leading-relaxed max-w-2xl">
+                    Direct access to the Google Drive cloud repository. Contains all raw project files, executable builds, exhaustive Game Design Documents, comprehensive technical reports (13K words), academic records, and CV variants.
+                </p>
+                <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="px-10 py-4.5 rounded-full bg-gradient-to-r from-[#6c8cff] to-[#a78bfa] text-white font-semibold text-xs font-mono uppercase tracking-widest hover:scale-105 transition-all duration-300 flex items-center gap-3 magnetic shadow-[0_0_40px_rgba(108,140,255,0.15)] hover:shadow-[0_0_70px_rgba(108,140,255,0.35)]">
+                    <i data-lucide="external-link" class="w-4 h-4"></i> Open Shared Directory
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <footer class="py-12 px-6 border-t border-white/5 bg-[#050505] relative z-10">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition interactive cursor-default">
+                <i data-lucide="hexagon" class="w-5 h-5 text-[#6c8cff]"></i>
+                <div class="text-xs font-mono text-white tracking-[0.2em] uppercase font-light">Leilani Bennett</div>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-8 text-[10px] font-mono uppercase tracking-[0.2em] text-app-muted">
+                <a href="#home" class="hover:text-white transition interactive magnetic relative after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[1px] after:bg-[#6c8cff] after:transition-all after:duration-300 hover:after:w-full">Top</a>
+                <a href="https://drive.google.com/drive/folders/1nvN16xqZ1WOwAMHGQiBkWKxnDT4Cw6g4?usp=drive_link" target="_blank" class="hover:text-white transition interactive magnetic relative after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[1px] after:bg-[#6c8cff] after:transition-all after:duration-300 hover:after:w-full">Drive</a>
+                <a href="https://github.com" target="_blank" class="hover:text-white transition interactive magnetic relative after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[1px] after:bg-[#6c8cff] after:transition-all after:duration-300 hover:after:w-full">GitHub</a>
+                <a href="mailto:rosezelda51@gmail.com" class="hover:text-white transition interactive magnetic relative after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[1px] after:bg-[#6c8cff] after:transition-all after:duration-300 hover:after:w-full">Email</a>
+            </div>
+            <div class="text-[9px] font-mono text-app-muted/40 tracking-widest">
+                © 2026 · v2.0
+            </div>
+        </div>
+    </footer>
+
+    <!-- ─── SCRIPTS ─── -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js">
+    </script>
+
+    <script>
+        // ─── Preloader ───
+        (function preloader() {
+            const bar = document.getElementById('loader-bar');
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 6 + 2;
+                if (progress > 100) progress = 100;
+                bar.style.width = progress + '%';
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        const el = document.getElementById('preloader');
+                        el.style.opacity = '0';
+                        setTimeout(() => { el.style.visibility = 'hidden'; }, 900);
+                    }, 300);
+                }
+            }, 140);
+        })();
+
+        // ─── AOS ───
+        AOS.init({ once: true, duration: 800, easing: 'ease-out-cubic', offset: 40 });
+
+        // ─── Icons ───
+        lucide.createIcons();
+
+        // ─── Scroll Progress & Nav ───
+        const nav = document.getElementById('main-nav');
+        const progressBar = document.getElementById('scroll-progress');
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = height ? (scrollTop / height) * 100 : 0;
+            progressBar.style.width = scrolled + '%';
+
+            if (scrollTop > 40) {
+                nav.classList.add('bg-black/80', 'backdrop-blur-xl', 'border-b', 'border-white/5');
+                nav.classList.remove('border-transparent');
+            } else {
+                nav.classList.remove('bg-black/80', 'backdrop-blur-xl', 'border-b', 'border-white/5');
+                nav.classList.add('border-transparent');
+            }
+        });
+
+        // ─── Audio ───
+        const audioBtn = document.getElementById('audio-toggle');
+        const bgm = document.getElementById('bg-music');
+        const sfxHover = document.getElementById('sfx-hover');
+        const sfxClick = document.getElementById('sfx-click');
+        let muted = true;
+
+        bgm.volume = 0.10;
+        sfxHover.volume = 0.08;
+        sfxClick.volume = 0.2;
+
+        audioBtn.addEventListener('click', () => {
+            muted = !muted;
+            if (muted) {
+                bgm.pause();
+                audioBtn.classList.add('muted');
+            } else {
+                bgm.play().catch(() => {});
+                audioBtn.classList.remove('muted');
+            }
+        });
+
+        // ─── Interactive SFX ───
+        document.querySelectorAll('.interactive').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                if (!muted) { sfxHover.currentTime = 0;
+                    sfxHover.play().catch(() => {}); }
+                document.body.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', () => {
+                document.body.classList.remove('hovering');
+            });
+            el.addEventListener('click', () => {
+                if (!muted && el !== audioBtn) { sfxClick.currentTime = 0;
+                    sfxClick.play().catch(() => {}); }
+                document.body.classList.add('clicking');
+                setTimeout(() => document.body.classList.remove('clicking'), 150);
+            });
+        });
+
+        // ─── Cursor ───
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        let mx = window.innerWidth / 2,
+            my = window.innerHeight / 2;
+        let rx = mx,
+            ry = my;
+
+        window.addEventListener('mousemove', (e) => {
+            mx = e.clientX;
+            my = e.clientY;
+            dot.style.left = mx + 'px';
+            dot.style.top = my + 'px';
+        });
+
+        function cursorLoop() {
+            rx += (mx - rx) * 0.12;
+            ry += (my - ry) * 0.12;
+            ring.style.left = rx + 'px';
+            ring.style.top = ry + 'px';
+            requestAnimationFrame(cursorLoop);
         }
-      });
-      el.addEventListener('click', () => {
-        if(!isMuted && el !== audioToggleBtn) {
-          sfxClick.currentTime = 0;
-          sfxClick.play().catch(()=>{});
+        cursorLoop();
+
+        // ─── Magnetic ───
+        document.querySelectorAll('.magnetic').forEach(el => {
+            el.addEventListener('mousemove', (e) => {
+                const rect = el.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                el.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'translate(0px, 0px)';
+            });
+        });
+
+        // ─── 3D Tilt ───
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const cx = rect.width / 2;
+                const cy = rect.height / 2;
+                const rotX = ((y - cy) / cy) * -6;
+                const rotY = ((x - cx) / cx) * 6;
+                card.style.transform =
+                    `perspective(1200px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+            });
+        });
+
+        // ─── Background Canvas (Particles) ───
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let W, H;
+        const particles = [];
+        const MOUSE_RADIUS = 160;
+        let mouseX = -9999,
+            mouseY = -9999;
+
+        function resizeCanvas() {
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
         }
-      });
-    });
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
-    // --- Custom Cursor Logic ---
-    const cursorDot = document.getElementById('cursor-dot');
-    const cursorRing = document.getElementById('cursor-ring');
-    let mouseX = 0, mouseY = 0;
-    let ringX = 0, ringY = 0;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        window.addEventListener('mouseleave', () => {
+            mouseX = -9999;
+            mouseY = -9999;
+        });
 
-    window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      // Instant movement for the dot
-      cursorDot.style.left = `${mouseX}px`;
-      cursorDot.style.top = `${mouseY}px`;
-    });
+        const COUNT = Math.min(80, Math.floor((W * H) / 12000));
+        for (let i = 0; i < COUNT; i++) {
+            particles.push({
+                x: Math.random() * W,
+                y: Math.random() * H,
+                vx: (Math.random() - 0.5) * 0.35,
+                vy: (Math.random() - 0.5) * 0.35,
+                r: Math.random() * 1.8 + 0.6,
+                alpha: Math.random() * 0.5 + 0.2,
+            });
+        }
 
-    // Smooth movement for the ring
-    function renderCursor() {
-      ringX += (mouseX - ringX) * 0.15;
-      ringY += (mouseY - ringY) * 0.15;
-      cursorRing.style.left = `${ringX}px`;
-      cursorRing.style.top = `${ringY}px`;
-      requestAnimationFrame(renderCursor);
-    }
-    requestAnimationFrame(renderCursor);
+        function drawParticles() {
+            ctx.clearRect(0, 0, W, H);
 
-    // Cursor hover effects
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-    });
-  </script>
+            // Update & draw
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // Mouse repulsion
+                const dx = p.x - mouseX;
+                const dy = p.y - mouseY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < MOUSE_RADIUS && dist > 0) {
+                    const force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * 0.8;
+                    p.x += (dx / dist) * force;
+                    p.y += (dy / dist) * force;
+                }
+
+                if (p.x < 0 || p.x > W) p.vx *= -1;
+                if (p.y < 0 || p.y > H) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255,255,255,${p.alpha * 0.5})`;
+                ctx.fill();
+            }
+
+            // Connections
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 160) {
+                        const alpha = 0.08 - (dist / 160) * 0.08;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+
+        // ─── Smooth anchor scroll ───
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
