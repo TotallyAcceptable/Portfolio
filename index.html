@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Leilani Bennett | Games Developer & Technical Producer</title>
+  <title>Leilani Bennett | Game Developer & Systems Programmer</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Inter & JetBrains Mono -->
@@ -23,11 +23,12 @@
           },
           colors: {
             brand: {
-              cyan: '#00e5ff',
-              purple: '#8b5cf6',
-              dark: '#0a0a0c',
-              card: '#121216',
-              border: '#23232c'
+              gold: '#D4AF37',       // Metallic Accent Gold
+              goldLight: '#F3E5AB',  // Soft Gold Highlight
+              light: '#FBFBFB',      // Off-White Prose
+              dark: '#050505',       // Deep Base Black
+              card: '#111113',       // Surface Dark Slate
+              border: '#27272E'      // Clean Edge Border
             }
           }
         }
@@ -36,35 +37,32 @@
   </script>
   <style>
     body {
-      background-color: #0a0a0c;
+      background-color: #050505;
       color: #e2e8f0;
     }
-    .glow-cyan {
-      box-shadow: 0 0 35px -5px rgba(0, 229, 255, 0.25);
-    }
-    .glow-purple {
-      box-shadow: 0 0 35px -5px rgba(139, 92, 246, 0.25);
+    .glow-gold {
+      box-shadow: 0 0 35px -5px rgba(212, 175, 55, 0.22);
     }
   </style>
 </head>
-<body class="font-sans antialiased selection:bg-cyan-500 selection:text-black">
+<body class="font-sans antialiased selection:bg-brand-gold selection:text-black">
 
   <!-- NAVIGATION -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0c]/80 backdrop-blur-md border-b border-[#23232c]">
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-brand-dark/90 backdrop-blur-md border-b border-brand-border">
     <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-      <a href="#hero" class="text-lg font-bold font-mono tracking-wider text-brand-cyan hover:opacity-80 transition flex items-center gap-2">
-        <i data-lucide="terminal" class="w-5 h-5"></i> LEILANI.BENNETT
+      <a href="#hero" class="text-lg font-bold font-mono tracking-wider text-brand-gold hover:opacity-80 transition flex items-center gap-2">
+        <i data-lucide="gamepad-2" class="w-5 h-5"></i> LEILANI.BENNETT
       </a>
-      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-400">
-        <a href="#flagship" class="hover:text-white transition">Featured Project</a>
-        <a href="#projects" class="hover:text-white transition">Projects</a>
-        <a href="#documents" class="hover:text-white transition">Documents</a>
-        <a href="#skills" class="hover:text-white transition">Skills</a>
-        <a href="#experience" class="hover:text-white transition">Experience</a>
+      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+        <a href="#flagship" class="hover:text-brand-gold transition">Featured Project</a>
+        <a href="#projects" class="hover:text-brand-gold transition">Game Projects</a>
+        <a href="#skills" class="hover:text-brand-gold transition">Skills & Toolkit</a>
+        <a href="#documents" class="hover:text-brand-gold transition">CV & Documents</a>
+        <a href="#education" class="hover:text-brand-gold transition">Background</a>
       </div>
       <div class="flex items-center gap-3">
-        <a href="#documents" class="px-4 py-2 text-xs font-mono font-semibold bg-brand-cyan/10 border border-brand-cyan/40 text-brand-cyan hover:bg-brand-cyan hover:text-black rounded transition">
-          DOWNLOAD CV
+        <a href="#documents" class="px-4 py-2 text-xs font-mono font-semibold bg-brand-gold/10 border border-brand-gold/40 text-brand-gold hover:bg-brand-gold hover:text-black rounded transition">
+          VIEW CV
         </a>
       </div>
     </div>
@@ -73,72 +71,72 @@
   <!-- HERO SECTION -->
   <section id="hero" class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
     <div class="flex flex-col items-start gap-6 max-w-4xl">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-purple/10 border border-brand-purple/30 text-purple-400 text-xs font-mono">
-        <span class="w-2 h-2 rounded-full bg-purple-400 animate-pulse"></span>
-        First Class Honours (BSc) Graduate | University of Westminster
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-brand-border text-white text-xs font-mono">
+        <span class="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
+        First Class Honours (BSc) in Computer Games Development | Westminster
       </div>
       
       <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-        Building Scalable <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-purple">Game Client Systems</span> & Backend Architecture.
+        Game Programmer & <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-brand-goldLight to-white">Systems Developer</span>
       </h1>
 
-      <p class="text-lg text-slate-400 leading-relaxed max-w-3xl">
-        Games developer and technical producer specializing in Unreal Engine 5, C++, modular event subsystems, and cloud services (Microsoft PlayFab). Proven track record managing full 7-phase lifecycles, rigorous QA frameworks, and performance profiling.
+      <p class="text-lg text-slate-300 leading-relaxed max-w-3xl">
+        BSc Games Development graduate with strong foundations in C++, C#, Unreal Engine 5, and Unity. Experienced across gameplay programming, engine architecture, custom shader/Niagara VFX creation, network mechanics, and cloud backend integration.
       </p>
 
       <div class="flex flex-wrap items-center gap-4 pt-2">
-        <a href="#flagship" class="px-6 py-3 rounded bg-brand-cyan text-black font-semibold text-sm hover:bg-cyan-300 transition flex items-center gap-2">
-          <i data-lucide="play" class="w-4 h-4"></i> View Flagship Case Study
+        <a href="#flagship" class="px-6 py-3 rounded bg-brand-gold text-black font-semibold text-sm hover:bg-yellow-400 transition flex items-center gap-2">
+          <i data-lucide="play" class="w-4 h-4"></i> Explore Featured Game
         </a>
-        <a href="https://github.com" target="_blank" class="px-6 py-3 rounded bg-[#121216] border border-[#23232c] text-slate-300 font-semibold text-sm hover:border-slate-500 hover:text-white transition flex items-center gap-2">
+        <a href="#projects" class="px-6 py-3 rounded bg-brand-card border border-brand-border text-slate-200 font-semibold text-sm hover:border-brand-gold hover:text-white transition flex items-center gap-2">
+          <i data-lucide="folder-git-2" class="w-4 h-4"></i> All Projects
+        </a>
+        <a href="https://github.com" target="_blank" class="px-6 py-3 rounded bg-brand-card border border-brand-border text-slate-300 font-semibold text-sm hover:border-slate-400 hover:text-white transition flex items-center gap-2">
           <i data-lucide="github" class="w-4 h-4"></i> GitHub
         </a>
-        <a href="https://linkedin.com" target="_blank" class="px-6 py-3 rounded bg-[#121216] border border-[#23232c] text-slate-300 font-semibold text-sm hover:border-slate-500 hover:text-white transition flex items-center gap-2">
-          <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
-        </a>
-        <a href="mailto:rosezelda51@gmail.com" class="px-6 py-3 rounded bg-[#121216] border border-[#23232c] text-slate-300 font-semibold text-sm hover:border-slate-500 hover:text-white transition flex items-center gap-2">
-          <i data-lucide="mail" class="w-4 h-4"></i> Contact Me
+        <a href="mailto:rosezelda51@gmail.com" class="px-6 py-3 rounded bg-brand-card border border-brand-border text-slate-300 font-semibold text-sm hover:border-slate-400 hover:text-white transition flex items-center gap-2">
+          <i data-lucide="mail" class="w-4 h-4"></i> Contact
         </a>
       </div>
 
-      <!-- Quick Metrics Grid -->
+      <!-- General Game Dev Metrics -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full pt-8">
-        <div class="p-4 rounded-lg bg-[#121216] border border-[#23232c]">
-          <div class="text-2xl font-bold font-mono text-brand-cyan">86%</div>
-          <div class="text-xs text-slate-400 font-medium">Final Project Grade (1st)</div>
+        <div class="p-4 rounded-lg bg-brand-card border border-brand-border">
+          <div class="text-2xl font-bold font-mono text-brand-gold">First Class</div>
+          <div class="text-xs text-slate-400 font-medium">BSc Degree Classification</div>
         </div>
-        <div class="p-4 rounded-lg bg-[#121216] border border-[#23232c]">
-          <div class="text-2xl font-bold font-mono text-brand-purple">UE 5.7</div>
-          <div class="text-xs text-slate-400 font-medium">Engine & Subsystems</div>
+        <div class="p-4 rounded-lg bg-brand-card border border-brand-border">
+          <div class="text-2xl font-bold font-mono text-white">UE5 & Unity</div>
+          <div class="text-xs text-slate-400 font-medium">Core Game Engines</div>
         </div>
-        <div class="p-4 rounded-lg bg-[#121216] border border-[#23232c]">
-          <div class="text-2xl font-bold font-mono text-emerald-400">88%</div>
-          <div class="text-xs text-slate-400 font-medium">QA Suite Pass Rate (60 Tests)</div>
+        <div class="p-4 rounded-lg bg-brand-card border border-brand-border">
+          <div class="text-2xl font-bold font-mono text-brand-gold">C++ / C#</div>
+          <div class="text-xs text-slate-400 font-medium">Object-Oriented Programming</div>
         </div>
-        <div class="p-4 rounded-lg bg-[#121216] border border-[#23232c]">
-          <div class="text-2xl font-bold font-mono text-amber-400">52</div>
-          <div class="text-xs text-slate-400 font-medium">Playtest Participants Analyzed</div>
+        <div class="p-4 rounded-lg bg-brand-card border border-brand-border">
+          <div class="text-2xl font-bold font-mono text-white">86%</div>
+          <div class="text-xs text-slate-400 font-medium">Final Year Project Score</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FLAGSHIP PROJECT CASE STUDY -->
-  <section id="flagship" class="py-20 px-6 max-w-7xl mx-auto border-t border-[#23232c]">
+  <section id="flagship" class="py-20 px-6 max-w-7xl mx-auto border-t border-brand-border">
     <div class="flex flex-col gap-3 mb-10">
-      <div class="text-xs font-mono text-brand-cyan uppercase tracking-wider flex items-center gap-2">
-        <i data-lucide="star" class="w-4 h-4"></i> Flagship University Engineering Project
+      <div class="text-xs font-mono text-brand-gold uppercase tracking-wider flex items-center gap-2">
+        <i data-lucide="star" class="w-4 h-4"></i> Flagship University Game Project
       </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Fictitious Choices (Unreal Engine 5)</h2>
-      <p class="text-slate-400 max-w-3xl">
-        A cinematic narrative prototype exploring emotional attachment, decoupled client architecture, cloud authentication, and non-predatory shop systems.
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Fictitious Choices – 3D Action Narrative Prototype</h2>
+      <p class="text-slate-300 max-w-3xl">
+        A full-featured Unreal Engine 5 prototype featuring third-person gameplay mechanics, modular C++ event architecture, custom Niagara VFX, dynamic lighting, and PlayFab backend integration.
       </p>
     </div>
 
     <!-- Main Project Showcase Card -->
-    <div class="rounded-xl bg-[#121216] border border-[#23232c] overflow-hidden glow-cyan">
-      <!-- Video Player Embed -->
-      <div class="relative w-full aspect-video bg-black border-b border-[#23232c]">
+    <div class="rounded-xl bg-brand-card border border-brand-border overflow-hidden glow-gold">
+      <!-- Responsive Video Player Embed -->
+      <div class="relative w-full aspect-video bg-black border-b border-brand-border">
         <iframe 
           class="w-full h-full" 
           src="https://www.youtube.com/embed/XAHQY7RkMws" 
@@ -149,306 +147,356 @@
         </iframe>
       </div>
 
-      <!-- Technical Breakdown Content -->
+      <!-- Multi-Disciplinary Engineering Breakdown -->
       <div class="p-8 space-y-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="p-5 rounded-lg bg-[#0a0a0c] border border-[#23232c] space-y-3">
-            <div class="flex items-center gap-2 text-brand-cyan font-mono text-sm font-semibold">
-              <i data-lucide="cpu" class="w-4 h-4"></i> C++ UI Event Subsystem
+          <div class="p-5 rounded-lg bg-brand-dark border border-brand-border space-y-3">
+            <div class="flex items-center gap-2 text-brand-gold font-mono text-sm font-semibold">
+              <i data-lucide="sword" class="w-4 h-4"></i> Gameplay & Interaction
             </div>
             <p class="text-xs text-slate-400 leading-relaxed">
-              Architected a decoupled UI Event Subsystem in C++ utilizing dynamic multicast delegates (<code class="text-cyan-300">FOnUIStateRequested</code>, <code class="text-cyan-300">FOnUIGoBackRequested</code>) and an <code class="text-cyan-300">EUIState</code> enum machine, completely removing hard-coded dependencies between HUD widgets.
+              Implemented third-person movement, stamina management, crouching, obstacle traversal, and channel-based sphere trace interaction interfaces (<code class="text-white">BPI_Interaction</code>) for NPCs, destructibles, gates, and world triggers.
             </p>
           </div>
 
-          <div class="p-5 rounded-lg bg-[#0a0a0c] border border-[#23232c] space-y-3">
-            <div class="flex items-center gap-2 text-brand-purple font-mono text-sm font-semibold">
-              <i data-lucide="cloud" class="w-4 h-4"></i> Microsoft PlayFab SDK
+          <div class="p-5 rounded-lg bg-brand-dark border border-brand-border space-y-3">
+            <div class="flex items-center gap-2 text-white font-mono text-sm font-semibold">
+              <i data-lucide="cpu" class="w-4 h-4"></i> C++ Architecture & Subsystems
             </div>
             <p class="text-xs text-slate-400 leading-relaxed">
-              Engineered client-side authentication pipelines, user session tracking, and cloud data persistence in JSON key-value format. Integrated seamless fallback routines to local <code class="text-purple-300">SaveGame</code> systems for offline resilience.
+              Architected a decoupled C++ UI Event Subsystem using dynamic multicast delegates (<code class="text-brand-gold">FOnUIStateRequested</code>, <code class="text-brand-gold">FOnUIGoBackRequested</code>) and data-table-driven dialogue/quest state machines to eliminate actor dependencies.
             </p>
           </div>
 
-          <div class="p-5 rounded-lg bg-[#0a0a0c] border border-[#23232c] space-y-3">
-            <div class="flex items-center gap-2 text-emerald-400 font-mono text-sm font-semibold">
-              <i data-lucide="gauge" class="w-4 h-4"></i> Profiling & Optimization
+          <div class="p-5 rounded-lg bg-brand-dark border border-brand-border space-y-3">
+            <div class="flex items-center gap-2 text-brand-gold font-mono text-sm font-semibold">
+              <i data-lucide="sparkles" class="w-4 h-4"></i> Graphics, VFX & Optimization
             </div>
             <p class="text-xs text-slate-400 leading-relaxed">
-              Audited GPU/CPU overhead via Unreal Profiler. Isolated severe frame drops caused by cloth simulations and groom hair, successfully optimizing runtime performance from 18 FPS to a stable 40–50 FPS baseline.
+              Designed custom Niagara particle systems (magic circles, dust, dissolve effects), custom stained glass shaders, and dynamic Lumen lighting. Profiled runtime performance to stabilize framerates from 18 FPS to a solid 40–50 FPS baseline.
             </p>
           </div>
         </div>
 
-        <!-- Document Links & Repository -->
-        <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#23232c]">
+        <!-- Links & Media -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-brand-border">
           <div class="flex flex-wrap items-center gap-3">
-            <a href="documents/W1826061-Final-Report.pdf" target="_blank" class="px-4 py-2 rounded bg-brand-cyan/10 border border-brand-cyan/40 text-brand-cyan text-xs font-mono font-medium hover:bg-brand-cyan hover:text-black transition flex items-center gap-2">
-              <i data-lucide="file-text" class="w-4 h-4"></i> Read Final Report (13,013 Words)
+            <a href="documents/W1826061-Final-Report.pdf" target="_blank" class="px-4 py-2 rounded bg-brand-gold/10 border border-brand-gold/40 text-brand-gold text-xs font-mono font-medium hover:bg-brand-gold hover:text-black transition flex items-center gap-2">
+              <i data-lucide="file-text" class="w-4 h-4"></i> Technical FYP Report (13,013 Words)
             </a>
-            <a href="https://www.youtube.com/watch?v=XAHQY7RkMws" target="_blank" class="px-4 py-2 rounded bg-[#0a0a0c] border border-[#23232c] text-slate-300 text-xs font-mono hover:border-slate-500 hover:text-white transition flex items-center gap-2">
-              <i data-lucide="video" class="w-4 h-4"></i> YouTube Demonstration
+            <a href="https://www.youtube.com/watch?v=XAHQY7RkMws" target="_blank" class="px-4 py-2 rounded bg-brand-dark border border-brand-border text-slate-300 text-xs font-mono hover:border-white hover:text-white transition flex items-center gap-2">
+              <i data-lucide="video" class="w-4 h-4"></i> Full Gameplay Video
             </a>
           </div>
-          <div class="text-xs font-mono text-slate-500">
-            Grade: First Class Honours (86/100)
+          <div class="text-xs font-mono text-slate-400">
+            Project Grade: <span class="text-brand-gold font-bold">86% / First Class Honours</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ADDITIONAL PROJECTS SECTION -->
-  <section id="projects" class="py-20 px-6 max-w-7xl mx-auto border-t border-[#23232c]">
+  <!-- GENERALIZED GAME PROJECTS GRID -->
+  <section id="projects" class="py-20 px-6 max-w-7xl mx-auto border-t border-brand-border">
     <div class="flex flex-col gap-3 mb-10">
-      <div class="text-xs font-mono text-brand-purple uppercase tracking-wider">Software & Systems Portfolio</div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Engineering & Technical Projects</h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- Project 2 -->
-      <div class="p-6 rounded-xl bg-[#121216] border border-[#23232c] hover:border-brand-purple/50 transition space-y-4">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold text-white">Client Network & Session Socket Prototype</h3>
-          <span class="text-xs font-mono px-2 py-1 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">C++ / C#</span>
-        </div>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Engineered a client-server socket communication layer handling packet serialization, session state synchronization, and reconnection handshakes. Integrated structured logging, error handling routines, and local client cache validation to ensure state integrity during unexpected packet loss.
-        </p>
-        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-500">
-          <span>#SocketProgramming</span>
-          <span>#NetworkSecurity</span>
-          <span>#PacketSerialization</span>
-        </div>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="p-6 rounded-xl bg-[#121216] border border-[#23232c] hover:border-brand-cyan/50 transition space-y-4">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold text-white">Modular Quest & Data-Driven Dialogue Framework</h3>
-          <span class="text-xs font-mono px-2 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Unreal Engine 5</span>
-        </div>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Developed a fully data-table-driven dialogue and quest log component hierarchy. Decoupled narrative content, facial animations, audio triggers, and player attribute points from hardcoded actor logic, enabling rapid narrative expansion and zero-overhead content authoring.
-        </p>
-        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-500">
-          <span>#DataTables</span>
-          <span>#ComponentDesign</span>
-          <span>#SequencerAudio</span>
-        </div>
-      </div>
-
-      <!-- Project 4 -->
-      <div class="p-6 rounded-xl bg-[#121216] border border-[#23232c] hover:border-emerald-500/50 transition space-y-4">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold text-white">Collaborative Games Delivery Repositories</h3>
-          <span class="text-xs font-mono px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Git / GitHub</span>
-        </div>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Coordinated multi-contributor project repositories on GitHub for university games development sprints. Managed branch merging, pull request reviews, merge conflict resolutions, and project documentation standards to ensure stable deliverables under tight milestones.
-        </p>
-        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-500">
-          <span>#VersionControl</span>
-          <span>#AgileSprints</span>
-          <span>#CodeReviews</span>
-        </div>
-      </div>
-
-      <!-- Project 5 -->
-      <div class="p-6 rounded-xl bg-[#121216] border border-[#23232c] hover:border-amber-500/50 transition space-y-4">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xl font-bold text-white">Level 3 Games & VFX Extended Showcase</h3>
-          <span class="text-xs font-mono px-2 py-1 rounded bg-amber-500/10 text-amber-400 border border-amber-500/30">Uxbridge College</span>
-        </div>
-        <p class="text-sm text-slate-400 leading-relaxed">
-          Completed a two-year diploma with Distinction, creating playable prototypes in Unity and Unreal Engine with custom C#/C++ gameplay systems, 3D asset modeling in Blender, and procedural visual effects simulations.
-        </p>
-        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-500">
-          <span>#Distinction</span>
-          <span>#Unity</span>
-          <span>#VFXPipeline</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DOCUMENT VAULT / REPOSITORY DOWNLOADS -->
-  <section id="documents" class="py-20 px-6 max-w-7xl mx-auto border-t border-[#23232c]">
-    <div class="flex flex-col gap-3 mb-10">
-      <div class="text-xs font-mono text-emerald-400 uppercase tracking-wider flex items-center gap-2">
-        <i data-lucide="folder-down" class="w-4 h-4"></i> Official Documents & Transcripts
-      </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Document Vault</h2>
+      <div class="text-xs font-mono text-white uppercase tracking-wider">Portfolio Showcase</div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Games & Software Projects</h2>
       <p class="text-slate-400 max-w-2xl">
-        Download verified academic records, project dissertations, and targeted CVs.
+        Work spanning game engine architecture, networking, AI behavior logic, real-time shaders, and collaborative agile pipelines.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <!-- Doc 1: SE CV -->
-      <div class="p-5 rounded-lg bg-[#121216] border border-[#23232c] flex flex-col justify-between gap-4">
-        <div class="space-y-2">
-          <div class="p-2.5 rounded bg-brand-cyan/10 text-brand-cyan w-fit">
-            <i data-lucide="file-code" class="w-5 h-5"></i>
-          </div>
-          <h4 class="font-bold text-white text-sm">Software Engineering CV</h4>
-          <p class="text-xs text-slate-400">Targeted for client architecture, C++, and backend roles.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- Project 1: Shaders & VFX -->
+      <div class="p-6 rounded-xl bg-brand-card border border-brand-border hover:border-brand-gold/60 transition space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold text-white">Real-Time Shaders & Niagara VFX Pipeline</h3>
+          <span class="text-xs font-mono px-2 py-1 rounded bg-brand-gold/10 text-brand-gold border border-brand-gold/30">UE5 / Shaders (77%)</span>
         </div>
-        <a href="documents/Software-Engineering-Intern-CV.pdf" download class="w-full py-2 text-center text-xs font-mono font-medium rounded bg-[#0a0a0c] border border-[#23232c] text-slate-300 hover:border-brand-cyan hover:text-brand-cyan transition flex items-center justify-center gap-2">
-          <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
-        </a>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Authored real-time materials including world-space UV projections, emissive pulse logic, stained glass refraction shaders, and dissolve volume masks. Created multi-emitter Niagara particle systems for ambient atmospheric dust and stylized interactive spell circles.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-400">
+          <span>#NiagaraVFX</span>
+          <span>#MaterialGraph</span>
+          <span>#LumenLighting</span>
+          <span>#ShaderLogic</span>
+        </div>
       </div>
 
-      <!-- Doc 2: PM CV -->
-      <div class="p-5 rounded-lg bg-[#121216] border border-[#23232c] flex flex-col justify-between gap-4">
-        <div class="space-y-2">
-          <div class="p-2.5 rounded bg-brand-purple/10 text-brand-purple w-fit">
-            <i data-lucide="briefcase" class="w-5 h-5"></i>
-          </div>
-          <h4 class="font-bold text-white text-sm">Project Management CV</h4>
-          <p class="text-xs text-slate-400">Targeted for gaming production, schedules, and QA pipelines.</p>
+      <!-- Project 2: Network & Socket Programming -->
+      <div class="p-6 rounded-xl bg-brand-card border border-brand-border hover:border-white/60 transition space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold text-white">Multiplayer Socket & Session Architecture</h3>
+          <span class="text-xs font-mono px-2 py-1 rounded bg-white/5 text-white border border-white/20">C++ / C# / Networking</span>
         </div>
-        <a href="documents/Project-Management-Intern-CV.pdf" download class="w-full py-2 text-center text-xs font-mono font-medium rounded bg-[#0a0a0c] border border-[#23232c] text-slate-300 hover:border-brand-purple hover:text-brand-purple transition flex items-center justify-center gap-2">
-          <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
-        </a>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Engineered a client-server socket communication framework handling custom binary/JSON packet serialization, session state synchronization, and reconnection handshakes. Implemented packet-loss mitigation, client-side predictive verification, and reconnection recovery.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-400">
+          <span>#GameNetworking</span>
+          <span>#SocketProgramming</span>
+          <span>#DataSerialization</span>
+        </div>
       </div>
 
-      <!-- Doc 3: FYP Report -->
-      <div class="p-5 rounded-lg bg-[#121216] border border-[#23232c] flex flex-col justify-between gap-4">
-        <div class="space-y-2">
-          <div class="p-2.5 rounded bg-emerald-500/10 text-emerald-400 w-fit">
-            <i data-lucide="book-open" class="w-5 h-5"></i>
-          </div>
-          <h4 class="font-bold text-white text-sm">BSc Final Year Report</h4>
-          <p class="text-xs text-slate-400">13,013-word complete dissertation (Score: 86% / First Class).</p>
+      <!-- Project 3: Data-Driven Quest & Dialogue Engine -->
+      <div class="p-6 rounded-xl bg-brand-card border border-brand-border hover:border-brand-gold/60 transition space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold text-white">Data-Driven Quest & Dialogue Systems</h3>
+          <span class="text-xs font-mono px-2 py-1 rounded bg-brand-gold/10 text-brand-gold border border-brand-gold/30">C++ / Unreal Engine 5</span>
         </div>
-        <a href="documents/W1826061-Final-Report.pdf" download class="w-full py-2 text-center text-xs font-mono font-medium rounded bg-[#0a0a0c] border border-[#23232c] text-slate-300 hover:border-emerald-400 hover:text-emerald-400 transition flex items-center justify-center gap-2">
-          <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
-        </a>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Designed modular Data Table (<code class="text-brand-gold">DT_</code>) and Data Asset (<code class="text-brand-gold">DA_</code>) systems in UE5 to drive narrative trees, multi-stage quest progression, audio voice line triggers, and player attribute points without code recompilation.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-400">
+          <span>#DataTables</span>
+          <span>#GameplayFramework</span>
+          <span>#GameInstance</span>
+        </div>
       </div>
 
-      <!-- Doc 4: Results Transcript -->
-      <div class="p-5 rounded-lg bg-[#121216] border border-[#23232c] flex flex-col justify-between gap-4">
-        <div class="space-y-2">
-          <div class="p-2.5 rounded bg-amber-500/10 text-amber-400 w-fit">
-            <i data-lucide="award" class="w-5 h-5"></i>
-          </div>
-          <h4 class="font-bold text-white text-sm">Academic Results & Degree</h4>
-          <p class="text-xs text-slate-400">Official Westminster results confirmation (First Class Honours).</p>
+      <!-- Project 4: Collaborative Games Delivery -->
+      <div class="p-6 rounded-xl bg-brand-card border border-brand-border hover:border-white/60 transition space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold text-white">Agile Group Game Development & Engine Repo</h3>
+          <span class="text-xs font-mono px-2 py-1 rounded bg-white/5 text-white border border-white/20">C++ / Git & GitHub</span>
         </div>
-        <a href="documents/Academic-Results-Westminster.pdf" download class="w-full py-2 text-center text-xs font-mono font-medium rounded bg-[#0a0a0c] border border-[#23232c] text-slate-300 hover:border-amber-400 hover:text-amber-400 transition flex items-center justify-center gap-2">
-          <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
-        </a>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Collaborated within multi-developer university teams to deliver structured gameplay prototypes under milestone deadlines. Managed GitHub repository branching workflows, pull request reviews, merge conflicts, and automated asset integration guidelines.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-400">
+          <span>#GitWorkflows</span>
+          <span>#AgileSprints</span>
+          <span>#TeamDelivery</span>
+        </div>
       </div>
+
+      <!-- Project 5: Cloud & Backend Economy -->
+      <div class="p-6 rounded-xl bg-brand-card border border-brand-border hover:border-brand-gold/60 transition space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold text-white">Live-Ops Economy & Cloud Data Persistence</h3>
+          <span class="text-xs font-mono px-2 py-1 rounded bg-brand-gold/10 text-brand-gold border border-brand-gold/30">PlayFab SDK / JSON</span>
+        </div>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Integrated Microsoft PlayFab SDK to handle client authentication, user account IDs, multi-currency shop inventories, and cloud statistic uploading, paired with local SaveGame caching routines for offline robustness.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-400">
+          <span>#CloudBackend</span>
+          <span>#EconomyDesign</span>
+          <span>#PlayFabSDK</span>
+        </div>
+      </div>
+
+      <!-- Project 6: Level 3 Diploma Extended Project -->
+      <div class="p-6 rounded-xl bg-brand-card border border-brand-border hover:border-white/60 transition space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xl font-bold text-white">3D Game Prototyping & Animation Pipeline</h3>
+          <span class="text-xs font-mono px-2 py-1 rounded bg-white/5 text-white border border-white/20">Unity / UE4 / Distinction</span>
+        </div>
+        <p class="text-sm text-slate-400 leading-relaxed">
+          Produced end-to-end interactive prototypes utilizing Unity (C#) and Unreal Engine (C++). Built custom 3D low-poly and high-poly environmental models in Blender, UV unwrapping, weight painting, and character animation integration.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2 text-xs font-mono text-slate-400">
+          <span>#Unity3D</span>
+          <span>#Blender3D</span>
+          <span>#GameArtPipeline</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- SKILLS & PROFICIENCIES -->
-  <section id="skills" class="py-20 px-6 max-w-7xl mx-auto border-t border-[#23232c]">
+  <section id="skills" class="py-20 px-6 max-w-7xl mx-auto border-t border-brand-border">
     <div class="flex flex-col gap-3 mb-10">
-      <div class="text-xs font-mono text-brand-cyan uppercase tracking-wider">Technical Toolkit</div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Skills & Proficiencies</h2>
+      <div class="text-xs font-mono text-brand-gold uppercase tracking-wider">Technical Toolkit</div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Skills & Competencies</h2>
+      <p class="text-slate-400 max-w-2xl">
+        Comprehensive software development toolkit covering game engines, systems programming, technical art, and production lifecycles.
+      </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="p-6 rounded-xl bg-[#121216] border border-[#23232c] space-y-4">
+      
+      <!-- Card 1: Programming & Engines -->
+      <div class="p-6 rounded-xl bg-brand-card border border-brand-border space-y-4">
         <h3 class="text-sm font-mono font-bold text-white flex items-center gap-2">
-          <i data-lucide="code-2" class="w-4 h-4 text-brand-cyan"></i> Languages & Engines
+          <i data-lucide="code-2" class="w-4 h-4 text-brand-gold"></i> Programming & Engines
         </h3>
-        <ul class="space-y-2 text-sm text-slate-400">
-          <li class="flex items-center justify-between"><span>C++ (Modern / Engine Level)</span> <span class="text-xs font-mono text-brand-cyan">Proficient</span></li>
-          <li class="flex items-center justify-between"><span>C#</span> <span class="text-xs font-mono text-slate-500">Proficient</span></li>
-          <li class="flex items-center justify-between"><span>Python / Java</span> <span class="text-xs font-mono text-slate-500">Intermediate</span></li>
-          <li class="flex items-center justify-between"><span>Unreal Engine 5 (UE 5.7)</span> <span class="text-xs font-mono text-brand-cyan">Advanced</span></li>
-          <li class="flex items-center justify-between"><span>Unity</span> <span class="text-xs font-mono text-slate-500">Intermediate</span></li>
+        <ul class="space-y-2.5 text-sm text-slate-300">
+          <li class="flex items-center justify-between"><span>C++ (Modern / Engine Level)</span> <span class="text-xs font-mono text-brand-gold">Advanced</span></li>
+          <li class="flex items-center justify-between"><span>C# (Unity / Tools)</span> <span class="text-xs font-mono text-brand-gold">Proficient</span></li>
+          <li class="flex items-center justify-between"><span>Python & Java</span> <span class="text-xs font-mono text-slate-400">Intermediate</span></li>
+          <li class="flex items-center justify-between"><span>Unreal Engine 5 (UE 5.7)</span> <span class="text-xs font-mono text-brand-gold">Advanced</span></li>
+          <li class="flex items-center justify-between"><span>Unity</span> <span class="text-xs font-mono text-slate-400">Proficient</span></li>
+          <li class="flex items-center justify-between"><span>Data Structures & Algorithms</span> <span class="text-xs font-mono text-brand-gold">Core</span></li>
         </ul>
       </div>
 
-      <div class="p-6 rounded-xl bg-[#121216] border border-[#23232c] space-y-4">
+      <!-- Card 2: Systems, VFX & Technical Art -->
+      <div class="p-6 rounded-xl bg-brand-card border border-brand-border space-y-4">
         <h3 class="text-sm font-mono font-bold text-white flex items-center gap-2">
-          <i data-lucide="layers" class="w-4 h-4 text-brand-purple"></i> Architecture & Tools
+          <i data-lucide="sparkles" class="w-4 h-4 text-white"></i> Systems & Technical Art
         </h3>
-        <ul class="space-y-2 text-sm text-slate-400">
-          <li class="flex items-center justify-between"><span>C++ Dynamic Delegates & UI Subsystems</span> <span class="text-xs font-mono text-brand-purple">Advanced</span></li>
-          <li class="flex items-center justify-between"><span>Microsoft PlayFab Cloud SDK</span> <span class="text-xs font-mono text-brand-purple">Intermediate</span></li>
-          <li class="flex items-center justify-between"><span>Visual Studio / JetBrains Rider</span> <span class="text-xs font-mono text-slate-500">Daily Driver</span></li>
-          <li class="flex items-center justify-between"><span>Git / GitHub (Branching & PRs)</span> <span class="text-xs font-mono text-slate-500">Advanced</span></li>
-          <li class="flex items-center justify-between"><span>Blender (3D Modeling & UVs)</span> <span class="text-xs font-mono text-slate-500">Intermediate</span></li>
+        <ul class="space-y-2.5 text-sm text-slate-300">
+          <li class="flex items-center justify-between"><span>Niagara VFX & Particle Systems</span> <span class="text-xs font-mono text-white">Proficient</span></li>
+          <li class="flex items-center justify-between"><span>Material Shaders & Post-Processing</span> <span class="text-xs font-mono text-white">Proficient</span></li>
+          <li class="flex items-center justify-between"><span>Dynamic Delegates & Subsystems</span> <span class="text-xs font-mono text-brand-gold">Advanced</span></li>
+          <li class="flex items-center justify-between"><span>Data Tables & Data Assets</span> <span class="text-xs font-mono text-brand-gold">Advanced</span></li>
+          <li class="flex items-center justify-between"><span>Blender (3D Modeling, UVs)</span> <span class="text-xs font-mono text-slate-400">Intermediate</span></li>
+          <li class="flex items-center justify-between"><span>MetaHuman Animator & Sequencer</span> <span class="text-xs font-mono text-slate-400">Proficient</span></li>
         </ul>
       </div>
 
-      <div class="p-6 rounded-xl bg-[#121216] border border-[#23232c] space-y-4">
+      <!-- Card 3: Backend, QA & Production -->
+      <div class="p-6 rounded-xl bg-brand-card border border-brand-border space-y-4">
         <h3 class="text-sm font-mono font-bold text-white flex items-center gap-2">
-          <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> Production & Quality Assurance
+          <i data-lucide="layers" class="w-4 h-4 text-brand-gold"></i> Tools, Backend & QA
         </h3>
-        <ul class="space-y-2 text-sm text-slate-400">
-          <li class="flex items-center justify-between"><span>Agile & Waterfall Lifecycles</span> <span class="text-xs font-mono text-emerald-400">Core</span></li>
-          <li class="flex items-center justify-between"><span>Gantt Charts & Trello Tracking</span> <span class="text-xs font-mono text-emerald-400">Advanced</span></li>
-          <li class="flex items-center justify-between"><span>White-Box & Black-Box QA Testing</span> <span class="text-xs font-mono text-slate-500">Advanced</span></li>
-          <li class="flex items-center justify-between"><span>Scope Management & Risk Assessment</span> <span class="text-xs font-mono text-emerald-400">Core</span></li>
-          <li class="flex items-center justify-between"><span>Playtest Analytics (Google Forms/Excel)</span> <span class="text-xs font-mono text-slate-500">Intermediate</span></li>
+        <ul class="space-y-2.5 text-sm text-slate-300">
+          <li class="flex items-center justify-between"><span>Microsoft PlayFab Cloud SDK</span> <span class="text-xs font-mono text-brand-gold">Proficient</span></li>
+          <li class="flex items-center justify-between"><span>Git & GitHub Version Control</span> <span class="text-xs font-mono text-brand-gold">Advanced</span></li>
+          <li class="flex items-center justify-between"><span>Visual Studio & JetBrains Rider</span> <span class="text-xs font-mono text-slate-400">Daily Driver</span></li>
+          <li class="flex items-center justify-between"><span>White-Box & Black-Box QA Testing</span> <span class="text-xs font-mono text-brand-gold">Core</span></li>
+          <li class="flex items-center justify-between"><span>Memory & Draw Call Profiling</span> <span class="text-xs font-mono text-slate-400">Proficient</span></li>
+          <li class="flex items-center justify-between"><span>Agile Lifecycle & Scope Control</span> <span class="text-xs font-mono text-brand-gold">Core</span></li>
         </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DOCUMENT VAULT -->
+  <section id="documents" class="py-20 px-6 max-w-7xl mx-auto border-t border-brand-border">
+    <div class="flex flex-col gap-3 mb-10">
+      <div class="text-xs font-mono text-brand-gold uppercase tracking-wider flex items-center gap-2">
+        <i data-lucide="folder-down" class="w-4 h-4"></i> Download Center
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Curriculum Vitae & Verified Documents</h2>
+      <p class="text-slate-400 max-w-2xl">
+        Download specialized CVs, full engineering dissertations, and official university transcripts.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- Doc 1: Software Engineering CV -->
+      <div class="p-5 rounded-lg bg-brand-card border border-brand-border flex flex-col justify-between gap-4">
+        <div class="space-y-2">
+          <div class="p-2.5 rounded bg-brand-gold/10 text-brand-gold w-fit">
+            <i data-lucide="file-code" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-white text-sm">Game Dev / Software CV</h4>
+          <p class="text-xs text-slate-400">Targeted for Gameplay, Engine, Systems, and C++ Roles.</p>
+        </div>
+        <a href="documents/Software-Engineering-Intern-CV.pdf" download class="w-full py-2 text-center text-xs font-mono font-medium rounded bg-brand-dark border border-brand-border text-slate-300 hover:border-brand-gold hover:text-brand-gold transition flex items-center justify-center gap-2">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+        </a>
+      </div>
+
+      <!-- Doc 2: Project Management / Production CV -->
+      <div class="p-5 rounded-lg bg-brand-card border border-brand-border flex flex-col justify-between gap-4">
+        <div class="space-y-2">
+          <div class="p-2.5 rounded bg-white/5 text-white w-fit">
+            <i data-lucide="briefcase" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-white text-sm">Game Production / PM CV</h4>
+          <p class="text-xs text-slate-400">Targeted for Production, QA, and Technical Project Management.</p>
+        </div>
+        <a href="documents/Project-Management-Intern-CV.pdf" download class="w-full py-2 text-center text-xs font-mono font-medium rounded bg-brand-dark border border-brand-border text-slate-300 hover:border-white hover:text-white transition flex items-center justify-center gap-2">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+        </a>
+      </div>
+
+      <!-- Doc 3: FYP Dissertation Report -->
+      <div class="p-5 rounded-lg bg-brand-card border border-brand-border flex flex-col justify-between gap-4">
+        <div class="space-y-2">
+          <div class="p-2.5 rounded bg-brand-gold/10 text-brand-gold w-fit">
+            <i data-lucide="book-open" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-white text-sm">BSc Final Project Report</h4>
+          <p class="text-xs text-slate-400">Complete 13,013-word technical report (Awarded 86% / First Class).</p>
+        </div>
+        <a href="documents/W1826061-Final-Report.pdf" download class="w-full py-2 text-center text-xs font-mono font-medium rounded bg-brand-dark border border-brand-border text-slate-300 hover:border-brand-gold hover:text-brand-gold transition flex items-center justify-center gap-2">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+        </a>
+      </div>
+
+      <!-- Doc 4: Academic Results Transcript -->
+      <div class="p-5 rounded-lg bg-brand-card border border-brand-border flex flex-col justify-between gap-4">
+        <div class="space-y-2">
+          <div class="p-2.5 rounded bg-white/5 text-white w-fit">
+            <i data-lucide="award" class="w-5 h-5"></i>
+          </div>
+          <h4 class="font-bold text-white text-sm">Westminster Academic Transcript</h4>
+          <p class="text-xs text-slate-400">Official university confirmation of First Class Honours award.</p>
+        </div>
+        <a href="documents/Academic-Results-Westminster.pdf" download class="w-full py-2 text-center text-xs font-mono font-medium rounded bg-brand-dark border border-brand-border text-slate-300 hover:border-white hover:text-white transition flex items-center justify-center gap-2">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+        </a>
       </div>
     </div>
   </section>
 
   <!-- EDUCATION & EXPERIENCE TIMELINE -->
-  <section id="experience" class="py-20 px-6 max-w-7xl mx-auto border-t border-[#23232c]">
+  <section id="education" class="py-20 px-6 max-w-7xl mx-auto border-t border-brand-border">
     <div class="flex flex-col gap-3 mb-10">
-      <div class="text-xs font-mono text-slate-500 uppercase tracking-wider">Background</div>
+      <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Background</div>
       <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Education & Experience</h2>
     </div>
 
     <div class="space-y-6 max-w-4xl">
-      <!-- Education 1 -->
-      <div class="p-6 rounded-xl bg-[#121216] border border-[#23232c] space-y-2">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-brand-cyan">
+      <!-- Degree -->
+      <div class="p-6 rounded-xl bg-brand-card border border-brand-border space-y-2">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-brand-gold">
           <span>University of Westminster, London</span>
           <span>2021 – 2026</span>
         </div>
-        <h3 class="text-lg font-bold text-white">BSc (Hons) Computer Games Development – First Class Honours</h3>
+        <h3 class="text-lg font-bold text-white">BSc (Hons) in Computer Games Development – First Class Honours</h3>
         <p class="text-sm text-slate-400 leading-relaxed">
-          Completed degree with First Class standing. Key results: Final Project (86%), Programming Methodology I & II (83% / 82%), Game Programming Patterns (73%), Game Engine Architecture (71%), Applied Mathematics (70%).
+          Core modules: Computer Games Development Final Project (86%), Programming Methodology I & II (83% / 82%), Introduction to Shaders and VFX (77%), Game Programming Patterns (73%), Game Engine Architecture (71%), Applied Mathematics (70%), Game AI (64%), Games Networking and Security (60%).
         </p>
       </div>
 
-      <!-- Education 2 -->
-      <div class="p-6 rounded-xl bg-[#121216] border border-[#23232c] space-y-2">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-brand-purple">
+      <!-- Diploma -->
+      <div class="p-6 rounded-xl bg-brand-card border border-brand-border space-y-2">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-white">
           <span>Uxbridge College, London</span>
           <span>2019 – 2021</span>
         </div>
         <h3 class="text-lg font-bold text-white">AIM Level 3 Extended Diploma in Games, Animation and VFX – Distinction</h3>
         <p class="text-sm text-slate-400 leading-relaxed">
-          Built foundational skills in C++/C# programming, Unity, Unreal Engine, and collaborative development.
+          Two-year extended diploma covering C++ and C# game development, Unity and Unreal Engine pipelines, 3D asset creation in Blender, and mathematical problem-solving.
         </p>
       </div>
 
-      <!-- Work Experience -->
-      <div class="p-6 rounded-xl bg-[#121216] border border-[#23232c] space-y-2">
+      <!-- Professional Background -->
+      <div class="p-6 rounded-xl bg-brand-card border border-brand-border space-y-2">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between text-xs font-mono text-slate-400">
           <span>Next, CeX, Arvato CRM (BMW Group)</span>
           <span>2022 – Present</span>
         </div>
         <h3 class="text-lg font-bold text-white">Professional Operations & Technical Customer Support</h3>
         <p class="text-sm text-slate-400 leading-relaxed">
-          Managed enterprise database systems, high-volume inventory pipelines, and SLA case tracking, consistently meeting and exceeding weekly performance KPIs.
+          Utilized enterprise inventory control databases, verified device hardware diagnostics, and managed technical case tracking, consistently meeting and surpassing SLA response metrics.
         </p>
       </div>
     </div>
   </section>
 
   <!-- FOOTER / CONTACT -->
-  <footer class="py-12 px-6 border-t border-[#23232c] bg-[#0a0a0c]">
+  <footer class="py-12 px-6 border-t border-brand-border bg-brand-dark">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
       <div>
         <div class="text-sm font-bold text-white">Leilani Bennett</div>
-        <div class="text-xs text-slate-500 font-mono">London, UK • rosezelda51@gmail.com</div>
+        <div class="text-xs text-slate-400 font-mono">London, UK • rosezelda51@gmail.com</div>
       </div>
-      <div class="flex items-center gap-6 text-slate-400 text-sm">
-        <a href="#hero" class="hover:text-white transition">Back to Top</a>
-        <a href="https://github.com" target="_blank" class="hover:text-white transition">GitHub</a>
-        <a href="https://linkedin.com" target="_blank" class="hover:text-white transition">LinkedIn</a>
+      <div class="flex items-center gap-6 text-slate-300 text-sm">
+        <a href="#hero" class="hover:text-brand-gold transition">Back to Top</a>
+        <a href="https://github.com" target="_blank" class="hover:text-brand-gold transition">GitHub</a>
+        <a href="https://linkedin.com" target="_blank" class="hover:text-brand-gold transition">LinkedIn</a>
+        <a href="mailto:rosezelda51@gmail.com" class="hover:text-brand-gold transition">Email</a>
       </div>
     </div>
   </footer>
